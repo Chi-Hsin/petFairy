@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>?</title>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="shortcut icon" href="img/decoration/favi.ico" type="image/x-icon" /> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"  href="css/index.css">
+
+
+<!-- <script src="js/html2canvas.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+</body>
+
+<div id="xyz">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height:10vh;">
+	  <a class="navbar-brand" href="javascript:void(0)">童話小圖</a>
+	  <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navb" aria-expanded="false">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="navbar-collapse collapse" id="navb">
+		<ul class="navbar-nav mr-auto">
+		
+		  <li class="nav-item" id="petSearch">
+			<a class="nav-link" href="javascript:;">幻獸搜尋<img src="img/Gmail.png" style="height:25px"></a>
+		  </li>
+		   <li class="nav-item" id="petMix">
+			<a class="nav-link" href="javascript:;">幻獸融合<img src="img/Gmail.png" style="height:25px"></a>
+		  </li>
+		  <li class="nav-item" id="skillList">
+			<a class="nav-link" href="javascript:;">技能列表<img src="img/Gmail.png" style="height:25px"></a>
+		  </li>
+		  <li class="nav-item" id="specirsList">
+			<a class="nav-link" href="javascript:;">物種列表<img src="img/Gmail.png" style="height:25px"></a>
+		  </li>
+		  <li class="nav-item" id="toyList">
+			<a class="nav-link" href="javascript:;">玩具列表<img src="img/Gmail.png" style="height:25px"></a>
+		  </li>
+		</ul>
+		<ul class="mb-0 mr-4">
+			<li class="nav-item dropdown">
+			  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+				語言(繁體)
+			  </a>
+			  <div class="dropdown-menu">
+				<a class="dropdown-item" href="#">繁體</a>
+				<a class="dropdown-item" href="#">簡体</a>
+				<a class="dropdown-item" href="#">英文</a>
+			  </div>
+			</li>
+		</ul>
+	  </div>
+	</nav>
+<div class="row" style="height:90vh;">
+	<div class="col-3"  style="background:url('bbb.png');background-repeat:no-repeat;background-size:center;"></div>
+	<div class="col-3 bg-warning">
+		<div class="row" v-for="(v,k) in petFilter">
+			{{v.name}}
+		</div>
+	
+	</div>
+	<div class="col-6 bg-info">
+		<xxxx @update-pet="updatepetfilter"></xxxx>
+		{{aaa}}
+		
+	
+	</div>
+</div>
+
+
+</div>
+
+
+
+</html>
+<script src="js/CompSelect.js"></script>
+<script src="js/pet.js"></script>
+<script src="js/index.js"></script>

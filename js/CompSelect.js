@@ -64,7 +64,7 @@ var testComp  = Vue.component("xxxx", {
 			},
 			select:function(){
 					// alert("select update")
-					console.log(this.select);
+					// console.log(this.select);
 					this.$emit("update-pet",this.select);
 				
 			},

@@ -1,1 +1,8 @@
 .row{margin:0;}
+[v-cloak] {
+  display: none;
+}
+
+.word-wrap {/*文字拉長*/
+   min-width:100px;
+}

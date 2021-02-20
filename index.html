@@ -29,14 +29,14 @@
 	  <div class="navbar-collapse collapse" id="navb">
 		<ul class="navbar-nav mr-auto">
 		
-		  <li class="nav-item" id="petSearch">
-			<a class="nav-link" href="javascript:;">幻獸搜尋<img src="img/Gmail.png" style="height:25px"></a>
+		  <li class="nav-item" id="petSearch" >
+			<a class="nav-link" href="javascript:;" @click="showDiv(1,1,1,0)">幻獸搜尋<img src="img/Gmail.png" style="height:25px"></a>
 		  </li>
 		   <li class="nav-item" id="petMix">
 			<a class="nav-link" href="javascript:;">幻獸融合<img src="img/Gmail.png" style="height:25px"></a>
 		  </li>
 		  <li class="nav-item" id="skillList">
-			<a class="nav-link" href="javascript:;">技能列表<img src="img/Gmail.png" style="height:25px"></a>
+			<a class="nav-link" href="javascript:;" @click="showDiv(1,1,0,1)">技能列表<img src="img/Gmail.png" style="height:25px"></a>
 		  </li>
 		  <li class="nav-item" id="specirsList">
 			<a class="nav-link" href="javascript:;">物種列表<img src="img/Gmail.png" style="height:25px"></a>
@@ -61,73 +61,23 @@
 	</nav>
 <div class="row" style="height:90vh;" v-cloak>
 
-	<div class="col-3 bg-warning"><!-- 左側道具欄 --></div>
+	<div class="col-3 bg-warning"></div><!-- 左側道具欄 -->
 	<div class="col-4">
-		<div class="row"  style="overflow:auto;height:25vh;" v-show="petDetailShow"><!-- 搜尋結果縮圖區 -->
+		<!-- 幻獸詳細資訊 -->
+		<dddd :data="{pet:detailData,skill:detailDataSkill,drop:detailDataDrop}"
+		@open-skill="showDiv(1,1,0,1)"></dddd>
+	
+	</div>
+	<div class="col-5">
+		<div class="row"  style="overflow:auto;height:25vh;" v-show="divShowStyle.petFilterShow"><!-- 搜尋結果縮圖區 -->
 			<div class="col-3" v-for="(v,k) in petFilter" >
 				<img style="width:100%" :src="`img/monster/`+v.id+`.gif`" 
 				@click="showDetailData(v.id)" onerror="this.src='img/icon/notfound.gif';">
 			</div>
 			
 		</div>
-		<div class="row" v-show="petDetailShow"><!-- 寵物詳細資訊 -->
-			<div class="col-5" style="padding:0;justify-content:center;
-				display: flex;flex-direction:column;">
-				<img :src="`img/monster/`+detailData.id+`.gif`" style="width:100%;" onerror="this.src='img/icon/notfound.gif';">
-			</div>
-			<div class="col-7">
-				{{detailData.name}}
-				LV:{{detailData.level}}
-				<p>物種:{{detailData.species}}</p>
-				<p>屬性:{{detailData.element}}</p>
-				<p>偏向:{{detailData.speciesDir}}</p>
-				<p>技能格:{{detailData.skillAmount}}</p>
-			</div>
-			<div class="col-6"><!--掉落列表-->
-				<p>
-					<table class="table">
-						<thead>
-						  <tr>
-							<th>掉落:</th>
-						  </tr>
-						</thead>
-						<tbody>
-						<tr v-for="(v,k) in detailDataDrop">
-						   <td><a href="javascript:;">{{v}}</a></td>
-						</tr>
-						</tbody>
-					</table>
-				</p>
-			</div>
-			<div class="col-6"><!--可學技能列表-->
-				<p>
-					<table class="table">
-						<thead>
-						  <tr>
-							<th>可學:</th>
-							<th></th>
-						  </tr>
-						</thead>
-						<tbody>
-						<tr v-for="(v,k) in detailDataSkill">
-						   <td><a :href="`#`+v" @click="goToSkillList">{{v}}</a></td>
-						   <td>
-							<a :href="`#`+v" @click="goToSkillList">
-							<img  :src="`img/skill/`+k+`.gif`"></a>
-						   </td>
-						  
-						</tr>
-						</tbody>
-					</table>
-				</p>
-			</div>
-		</div>
-		
-	
-	</div>
-	<div class="col-5">
-		<xxxx @update-pet="updatepetfilter" v-show="petSearchShow"></xxxx><!--幻獸搜尋選項-->
-		<ssss :data="allSkill" v-show="skillListShow"></ssss><!--技能列表-->
+		<xxxx @update-pet="updatepetfilter" v-show="divShowStyle.petSearchShow"></xxxx><!--幻獸搜尋選項-->
+		<ssss :data="allSkill" v-show="divShowStyle.skillListShow" style="height:90vh;overflow:auto;"></ssss><!--技能列表-->
 		
 	
 	</div>
@@ -141,6 +91,7 @@
 </html>
 <script src="js/CompSelect.js"></script>
 <script src="js/CompSkill.js"></script>
+<script src="js/CompPetDetail.js"></script>
 <script src="js/pet.js"></script>
 <script src="js/skill.js"></script>
 <script src="js/index.js"></script>

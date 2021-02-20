@@ -1,5 +1,4 @@
 var petData = new Vue({
-            el: '#petSearch',
             data: {
 				allPet:[
 					{"id":1,"name":"窩捲蟲","level":"1~3","species":"蝸牛","speciesDir":"體","element":"金","skillAmount":2,"str":4,"vit":5,"agi":4,"int":4,"luk":5,"chm":4,"life":56,"drop":"窩捲蟲卡 窩捲蟲娃娃 新手屠刀 修行袍 煤 青銅礦 娃娃盒","skill":"恢復、豬頭、裝死、賜福、轉換、魔刃術、裂地斬","map":"市鎮地下室、吉恩村、綠夫村、伊利村","圖片":"V"},

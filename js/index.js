@@ -1,10 +1,13 @@
 var indexData = new Vue({
             el: '#xyz',
             data: {
-				petDetailShow:true,
-				skillListShow:false,
-				petSearchShow:true,
-				
+				divShowStyle:{
+					petFilterShow:1,
+					petDetailShow:1,
+					petSearchShow:1,
+					skillListShow:0,
+					
+				},
 				allPet:petData.allPet,
 				allSkill:skillData.allSkill,
 				petFilter:[
@@ -37,16 +40,34 @@ var indexData = new Vue({
 			},
 			components:{"testComp":testComp},
             methods:{
-				goToSkillList:function(){
-					this.skillListShow = true;
-					this.petSearchShow = false;
+				showDiv:function(obj){
+					
+					this.divShowStyle = {
+						petFilterShow:arguments[0],
+						petDetailShow:arguments[1],
+						petSearchShow:arguments[2],
+						skillListShow:arguments[3],
+					}
 				},
+				
+				
+				
+				
+				// openSkillList:function(){
+					// this.skillListShow = true;
+					// this.petSearchShow = false;
+					// this.petFilterShow = false;
+				// },
 				updatepetfilter:function(val){
 					this.petFilter = this.allPet.filter(function(x){
 						var condition1 = x.name.includes(val.nameSelect);
-						var condition2 = val.elementSelect == "" ? true : x.element == val.elementSelect;
-						var condition3 = val.speciesDirSelect == "" ? true : x.speciesDir == val.speciesDirSelect;
-						return condition1 && condition2 && condition3;
+						var condition2 = val.dropSelect == "" ? true 
+															  :x.drop.split(" ").some(function(v){
+																 return v.includes(val.dropSelect)
+															  });
+						var condition3 = val.elementSelect == "不限"? true : x.element == val.elementSelect;
+						var condition4 = val.speciesDirSelect == "不限"? true : x.speciesDir == val.speciesDirSelect;
+						return condition1 && condition2 && condition3 && condition4;
 					})
 				},
 				showDetailData:function(id){

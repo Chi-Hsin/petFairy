@@ -72,7 +72,7 @@
 		<div class="row"  style="overflow:auto;height:25vh;" v-show="divShowStyle.petFilterShow"><!-- 搜尋結果縮圖區 -->
 			<div class="col-3" v-for="(v,k) in petFilter" >
 				<img style="width:100%" :src="`img/monster/`+v.id+`.gif`" 
-				@click="showDetailData(v.id)" onerror="this.src='img/icon/notfound.gif';">
+				@click="showDetailData(v.id)" onError="this.src='img/icon/notfound.gif';">
 			</div>
 			
 		</div>

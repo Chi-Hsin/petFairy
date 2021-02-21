@@ -1,10 +1,15 @@
 var skillComp  = Vue.component("ssss", {
 	
         props:["data"],
+		data: function () {
+		  return {
+			skillSelect:"",
+		  }
+		},
 		computed:{
 		},
 		template: `<div class="row table-responsive">
-						<table class="table">
+						<table class="table table-striped">
 									<thead>
 									  <tr>
 										<th class="word-wrap">名稱</th>
@@ -17,7 +22,7 @@ var skillComp  = Vue.component("ssss", {
 									</thead>
 									<tbody>
 									<tr  v-for="(v,k) in data" :id="v.name">
-									   <td class="word-wrap">{{v.name}}</td>
+									   <td class="word-wrap"><a href="javascript:;" @click="skillFilter(v.type)">{{v.name}}</a></td>
 									   <td><img :src="'img/skill/'+v.id+'.gif'"></td>
 									   <td>{{v.when}}</td>
 									   <td>{{v.level}}</td>
@@ -28,7 +33,10 @@ var skillComp  = Vue.component("ssss", {
 						</table>
 					</div>`,
 		methods:{
-			
+			skillFilter:function(v){
+				this.skillSelect = v;
+				this.$emit("skill-filter",this.skillSelect)
+			},
 		},
 		watch:{
 			

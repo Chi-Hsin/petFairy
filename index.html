@@ -30,19 +30,19 @@
 		<ul class="navbar-nav mr-auto">
 		
 		  <li class="nav-item" id="petSearch" >
-			<a class="nav-link" href="javascript:;" @click="showDiv(1,1,1,0)">幻獸搜尋<img src="img/Gmail.png" style="height:25px"></a>
+			<a class="nav-link" href="javascript:;" @click="showDiv(1,1,1,1,0,0)">幻獸搜尋<img src="img/Gmail.png" style="height:25px"></a>
 		  </li>
 		   <li class="nav-item" id="petMix">
 			<a class="nav-link" href="javascript:;">幻獸融合<img src="img/Gmail.png" style="height:25px"></a>
 		  </li>
 		  <li class="nav-item" id="skillList">
-			<a class="nav-link" href="javascript:;" @click="showDiv(1,1,0,1)">技能列表<img src="img/Gmail.png" style="height:25px"></a>
+			<a class="nav-link" href="javascript:;" @click="showDiv(1,1,1,0,1,0)">技能列表<img src="img/Gmail.png" style="height:25px"></a>
 		  </li>
 		  <li class="nav-item" id="specirsList">
 			<a class="nav-link" href="javascript:;">物種列表<img src="img/Gmail.png" style="height:25px"></a>
 		  </li>
 		  <li class="nav-item" id="toyList">
-			<a class="nav-link" href="javascript:;">玩具列表<img src="img/Gmail.png" style="height:25px"></a>
+			<a class="nav-link" href="javascript:;" @click="showDiv(1,1,0,0,0,1)">玩具列表<img src="img/Gmail.png" style="height:25px"></a>
 		  </li>
 		</ul>
 		<ul class="mb-0 mr-4">
@@ -61,11 +61,11 @@
 	</nav>
 <div class="row" style="height:90vh;" v-cloak>
 
-	<div class="col-3 bg-warning"></div><!-- 左側道具欄 -->
+	<div class="col-3 bg-warning" v-show="divShowStyle.myBoxShow"></div><!-- 左側道具欄 -->
 	<div class="col-4">
 		<!-- 幻獸詳細資訊 -->
 		<dddd :data="{pet:detailData,skill:detailDataSkill,drop:detailDataDrop}"
-		@open-skill="showDiv(1,1,0,1)"></dddd>
+		@open-skill="showDiv(1,1,1,0,1,0)"></dddd>
 	
 	</div>
 	<div class="col-5">
@@ -77,8 +77,10 @@
 			
 		</div>
 		<xxxx @update-pet="updatepetfilter" v-show="divShowStyle.petSearchShow"></xxxx><!--幻獸搜尋選項-->
-		<ssss :data="allSkill" v-show="divShowStyle.skillListShow" style="height:90vh;overflow:auto;"></ssss><!--技能列表-->
+		<ssss :data="allSkill" v-show="divShowStyle.skillListShow" 
+		style="height:90vh;overflow:auto;" @skill-filter="skillSelectFilter"></ssss><!--技能列表-->
 		
+		<tttt :data="allToy" v-show="divShowStyle.toyListShow" style="height:90vh;overflow:auto;" @show-toypets="showToyPets"></tttt>
 	
 	</div>
 </div>
@@ -92,6 +94,8 @@
 <script src="js/CompSelect.js"></script>
 <script src="js/CompSkill.js"></script>
 <script src="js/CompPetDetail.js"></script>
+<script src="js/CompToy.js"></script>
 <script src="js/pet.js"></script>
+<script src="js/toy.js"></script>
 <script src="js/skill.js"></script>
 <script src="js/index.js"></script>

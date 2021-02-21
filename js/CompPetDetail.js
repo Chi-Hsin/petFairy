@@ -6,7 +6,7 @@ var detailComp  = Vue.component("dddd", {
 		template: `<div class="row"><!-- 寵物詳細資訊 -->
 						<div class="col-5" style="padding:0;justify-content:center;
 							display: flex;flex-direction:column;">
-							<img :src="'img/monster/'+data.pet.id+'.gif'" style="width:100%;" onerror="this.src='img/icon/notfound.gif';">
+							<img :src="'img/monster/'+data.pet.id+'.gif'" style="width:100%;" onerror="this.src='img/icon/notFound.gif';">
 						</div>
 						<div class="col-7">
 							{{data.pet.name}}

@@ -6,10 +6,10 @@ var testComp  = Vue.component("xxxx", {
 			count: 48763,
 			element:["不限","金","木","水","火","土","光","闇"],
 			dir:["不限","力","體","敏","智","幸"],
-			elementSelect:"不限",
-			speciesDirSelect:"不限",
+			elementSelect:"闇",
+			speciesDirSelect:"智",
 			dropSelect:"",
-			nameSelect:"窩捲蟲",
+			nameSelect:"黑鼠",
 		  }
 		},
 		computed:{
@@ -46,6 +46,8 @@ var testComp  = Vue.component("xxxx", {
 			},
 			dropSelect:function(){
 				this.select.dropSelect = this.dropSelect;
+				this.elementSelect = "不限";
+				this.speciesDirSelect = "不限";
 			},
 			elementSelect:function(){
 				this.select.elementSelect = this.elementSelect;

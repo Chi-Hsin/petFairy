@@ -1,7 +1,7 @@
 var toyData = new Vue({
             data: {
 				allToy:[
-				{"id":1,"name":"木馬","level":20,"base":"木馬馬鞍","item":"柚木 10 羊皮 20 金屬蠍卡","doll":"金屬蠍娃娃","petsRelated":"金屬蠍","dollLimit":5,"statusLimit":25},
+				{"id":1,"name":"木馬","level":20,"base":"木馬馬鞍","item":"柚木 10 羊皮 20 金屬蝎卡","doll":"金屬蝎娃娃","petsRelated":"金屬蝎","dollLimit":5,"statusLimit":25},
 				{"id":2,"name":"豪華木馬","level":40,"base":"豪華馬鞍","item":"紅檜 10 牛皮 20 木鳩獸卡","doll":"木鳩獸娃娃","petsRelated":"木鳩獸","dollLimit":7,"statusLimit":35},
 				{"id":3,"name":"黃金木馬","level":60,"base":"黃金馬鞍","item":"紫杉 10 鹿皮 20 窩木蟲卡","doll":"窩木蟲娃娃","petsRelated":"窩木蟲","dollLimit":9,"statusLimit":45},
 				{"id":4,"name":"大砲","level":20,"base":"普通砲管","item":"鐵塊 4 鹿皮 6 土Q獸卡","doll":"土Q獸娃娃","petsRelated":"土Q獸","dollLimit":5,"statusLimit":25},
@@ -10,7 +10,7 @@ var toyData = new Vue({
 				{"id":7,"name":"玩具兵","level":20,"base":"玩具步槍","item":"黑檀木 4 鱷魚皮 3 光Q獸卡","doll":"光Q獸娃娃","petsRelated":"光Q獸","dollLimit":5,"statusLimit":25},
 				{"id":8,"name":"衛兵隊長","level":40,"base":"火紅步槍","item":"鐵杉 6 虎皮 5 妮莎駱駝卡","doll":"妮莎駱駝娃娃","petsRelated":"妮莎駱駝","dollLimit":7,"statusLimit":35},
 				{"id":9,"name":"黃金士兵","level":60,"base":"黃金步槍","item":"紅豆杉 8 龍鱗 7 土瓢蟲卡","doll":"土瓢蟲娃娃","petsRelated":"土瓢蟲","dollLimit":9,"statusLimit":45},
-				{"id":10,"name":"汽車","level":20,"base":"汽車引擎","item":"鋼塊 1 牛皮 10 闇影蠍卡","doll":"闇影蠍娃娃","petsRelated":"闇影蠍","dollLimit":5,"statusLimit":25},
+				{"id":10,"name":"汽車","level":20,"base":"汽車引擎","item":"鋼塊 1 牛皮 10 闇影蝎卡","doll":"闇影蝎娃娃","petsRelated":"闇影蝎","dollLimit":5,"statusLimit":25},
 				{"id":11,"name":"跑車","level":40,"base":"跑車引擎","item":"鋼條 2 鹿皮 12 激戰蜥蜴卡","doll":"激戰蜥蜴娃娃","petsRelated":"激戰蜥蜴","dollLimit":7,"statusLimit":35},
 				{"id":12,"name":"黃金跑車","level":60,"base":"黃金引擎","item":"合金鋼 3 貂皮 14 正港黑豬卡","doll":"正港黑豬娃娃","petsRelated":"正港黑豬","dollLimit":9,"statusLimit":45},
 				{"id":13,"name":"芭蕾娃娃","level":20,"base":"芭蕾舞鞋","item":"竹子 20 羊皮 20 麻辣駱駝卡","doll":"麻辣駱駝娃娃","petsRelated":"麻辣駱駝","dollLimit":5,"statusLimit":25},
@@ -26,7 +26,7 @@ var toyData = new Vue({
 				{"id":23,"name":"飛碟","level":40,"base":"神秘發光體","item":"鋼塊 2 犀牛皮 7 金海馬卡","doll":"金海馬娃娃","petsRelated":"金海馬","dollLimit":7,"statusLimit":35},
 				{"id":24,"name":"黃金飛碟","level":60,"base":"黃金發光體","item":"鋼條 3 鱷魚皮 9 泥娃娃卡","doll":"泥娃娃娃娃","petsRelated":"泥娃娃","dollLimit":9,"statusLimit":45},
 				{"id":25,"name":"骰子","level":20,"base":"骰子模型","item":"鐵塊 4 鹿皮 10 駱駝卡","doll":"駱駝娃娃","petsRelated":"駱駝","dollLimit":5,"statusLimit":25},
-				{"id":26,"name":"鑲金骰子","level":40,"base":"鑲金骰子模型","item":"銀塊 5 貂皮 10 爬木蠍卡","doll":"爬木蠍娃娃","petsRelated":"爬木蠍","dollLimit":7,"statusLimit":35},
+				{"id":26,"name":"鑲金骰子","level":40,"base":"鑲金骰子模型","item":"銀塊 5 貂皮 10 爬木蝎卡","doll":"爬木蝎娃娃","petsRelated":"爬木蝎","dollLimit":7,"statusLimit":35},
 				{"id":27,"name":"黃金骰子","level":60,"base":"黃金骰子模型","item":"金塊 6 犀牛皮 10 老實牛卡","doll":"老實牛娃娃","petsRelated":"老實牛","dollLimit":9,"statusLimit":45},
 				{"id":28,"name":"迷你衛星","level":20,"base":"迷你電腦","item":"鋼塊 1 牛皮 10 水鳩獸卡","doll":"水鳩獸娃娃","petsRelated":"水鳩獸","dollLimit":5,"statusLimit":25},
 				{"id":29,"name":"人造衛星","level":40,"base":"衛星電腦","item":"鋼條 2 鹿皮 10 法亞象卡","doll":"法亞象娃娃","petsRelated":"法亞象","dollLimit":7,"statusLimit":35},

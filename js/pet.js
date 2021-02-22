@@ -799,7 +799,8 @@ var petData = new Vue({
 					{"id":796,"name":"水貝貝","level":"21~25","species":"蚌類","speciesDir":"體","element":"水","skillAmount":4,"str":"28","vit":"30","agi":"26","int":"26","luk":"24","chm":"28","life":"278","drop":"水貝貝卡 水貝貝娃娃 褐木棒 方盾 香蕉 草莓 水晶原石","skill":"恢復、轉換、賜福、吸血、亡命一擊、波之舞、冰刃術","map":"史蓋窩克海(稀有)","圖片":""},
 					{"id":797,"name":"小木精靈","level":"65","species":"精靈","speciesDir":"智","element":"木","skillAmount":4,"str":"85","vit":"85","agi":"85","int":"85","luk":"85","chm":"85","life":"10000","drop":"小木精靈卡 小木精靈娃娃","skill":"肉體強化、豬頭、裝死、賜福、亡命一擊、巨木之擊、禁言","map":"天鵝湖(稀有)","圖片":""},
 					{"id":798,"name":"福瑞龍","level":"65","species":"卡拉龍","speciesDir":"力","element":"水","skillAmount":4,"str":"98","vit":"98","agi":"98","int":"98","luk":"98","chm":"98","life":"10000","drop":"福瑞龍卡 福瑞龍娃娃","skill":"肉體強化、恢復、連擊、裝死、賜福、推車、波之舞、冰刃術","map":"米夏島(稀有)","圖片":""},
-					{"id":799,"name":"火雷獸","level":"65","species":"雷爵獸","speciesDir":"智","element":"火","skillAmount":4,"str":"105","vit":"105","agi":"105","int":"105","luk":"105","chm":"105","life":"10000","drop":"火雷獸卡 火雷獸娃娃","skill":"肉體強化、連擊、裝死、吸血、亡命一擊、軟化護甲、火彈術","map":"金銀湖(稀有)","圖片":""}
+					{"id":799,"name":"火雷獸","level":"65","species":"雷爵獸","speciesDir":"智","element":"火","skillAmount":4,"str":"105","vit":"105","agi":"105","int":"105","luk":"105","chm":"105","life":"10000","drop":"火雷獸卡 火雷獸娃娃","skill":"肉體強化、連擊、裝死、吸血、亡命一擊、軟化護甲、火彈術","map":"金銀湖(稀有)","圖片":""},
+					{"id":800,"name":"黃金鯉魚","level":"81~90","species":"鯉魚","speciesDir":"敏","element":"金","skillAmount":5,"str":"???","vit":"???","agi":"???","int":"???","luk":"???","chm":"???","life":"???","drop":"待補充","skill":"恢復、裝死、賜福、轉換、吸血、犧牲、亡命一擊、魔刃術、裂地斬、拉拉舞","map":"霧張之海B1","圖片":""}
 
 				],
                },

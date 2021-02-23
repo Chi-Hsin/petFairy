@@ -10,18 +10,19 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet"  href="css/index.css">
 
-
-<!-- <script src="js/html2canvas.js"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
 <body>
 </body>
 
 <div id="xyz">
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height:10vh;">
-	  <a class="navbar-brand" href="javascript:void(0)">童話小圖</a>
+	  <a class="navbar-brand" href="javascript:void(0)"><img src="img/icon/AAAAA.png"></a>
 	  <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navb" aria-expanded="false">
 		<span class="navbar-toggler-icon"></span>
 	  </button>
@@ -30,19 +31,19 @@
 		<ul class="navbar-nav mr-auto">
 		
 		  <li class="nav-item" id="petSearch" >
-			<a class="nav-link" href="javascript:;" @click="showDiv(1,1,1,1,0,0)">幻獸搜尋<img src="img/Gmail.png" style="height:25px"></a>
+			<a class="nav-link" href="javascript:;" @click="showDiv(1,1,1,1,0,0)">幻獸搜尋<img src="img/icon/BBBB.png" style="height:5vh"></a>
 		  </li>
 		   <li class="nav-item" id="petMix">
-			<a class="nav-link" href="javascript:;">幻獸融合<img src="img/Gmail.png" style="height:25px"></a>
+			<a class="nav-link" href="javascript:;">幻獸融合<img src="img/icon/BBBB.png" style="height:5vh"></a>
 		  </li>
 		  <li class="nav-item" id="skillList">
-			<a class="nav-link" href="javascript:;" @click="showDiv(1,1,1,0,1,0)">技能列表<img src="img/Gmail.png" style="height:25px"></a>
+			<a class="nav-link" href="javascript:;" @click="showDiv(1,1,1,0,1,0)">技能列表<img src="img/icon/BBBB.png" style="height:5vh"></a>
 		  </li>
 		  <li class="nav-item" id="specirsList">
-			<a class="nav-link" href="javascript:;">物種列表<img src="img/Gmail.png" style="height:25px"></a>
+			<a class="nav-link" href="javascript:;">物種列表<img src="img/icon/BBBB.png" style="height:5vh"></a>
 		  </li>
 		  <li class="nav-item" id="toyList">
-			<a class="nav-link" href="javascript:;" @click="showDiv(1,1,0,0,0,1)">玩具列表<img src="img/Gmail.png" style="height:25px"></a>
+			<a class="nav-link" href="javascript:;" @click="showDiv(1,1,0,0,0,1)">玩具列表<img src="img/icon/BBBB.png" style="height:5vh"></a>
 		  </li>
 		</ul>
 		<ul class="mb-0 mr-4">
@@ -61,11 +62,15 @@
 	</nav>
 <div class="row" style="height:90vh;" v-cloak>
 
-	<div class="col-3 bg-warning" v-show="divShowStyle.myBoxShow"></div><!-- 左側道具欄 -->
+	<!-- 左側道具欄 -->
+	<div class="col-3" v-show="divShowStyle.myBoxShow" style="margin:0;padding:0;background:#DEBA72;height:90vh;overflow:auto;">
+		<bbbb :data="boxContent"></bbbb>
+	
+	</div>
 	<div class="col-4">
 		<!-- 幻獸詳細資訊 -->
 		<dddd :data="{pet:detailData,skill:detailDataSkill,drop:detailDataDrop}"
-		@open-skill="showDiv(1,1,1,0,1,0)"></dddd>
+		@open-skill="showDiv(1,1,1,0,1,0)" @box-add="boxAdded"></dddd>
 	
 	</div>
 	<div class="col-5">
@@ -78,7 +83,7 @@
 		</div>
 		<xxxx @update-pet="updatepetfilter" v-show="divShowStyle.petSearchShow"></xxxx><!--幻獸搜尋選項-->
 		<ssss :data="allSkill" v-show="divShowStyle.skillListShow" 
-		style="height:90vh;overflow:auto;" @skill-filter="skillSelectFilter"></ssss><!--技能列表-->
+		style="height:65vh;overflow:auto;" @skill-filter="skillSelectFilter"></ssss><!--技能列表-->
 		
 		<tttt :data="allToy" v-show="divShowStyle.toyListShow" style="height:90vh;overflow:auto;" @show-toypets="showToyPets"></tttt>
 	
@@ -95,6 +100,7 @@
 <script src="js/CompSkill.js"></script>
 <script src="js/CompPetDetail.js"></script>
 <script src="js/CompToy.js"></script>
+<script src="js/CompBox.js"></script>
 <script src="js/pet.js"></script>
 <script src="js/toy.js"></script>
 <script src="js/skill.js"></script>

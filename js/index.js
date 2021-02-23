@@ -13,6 +13,7 @@ var indexData = new Vue({
 				allPet:petData.allPet,
 				allSkill:skillData.allSkill,
 				allToy:toyData.allToy,
+				boxContent:[],
 				petFilter:[
 					{"id":212,"name":"黑鼠","level":"10~12","species":"老鼠","speciesDir":"智","element":"闇","skillAmount":3,"str":"14","vit":"14","agi":"16","int":"16","luk":"16","chm":"14","life":"97","drop":"黑鼠卡 黑鼠娃娃 重藤棍 青銅鎧甲 煤 青銅礦 黑色鈕釦","skill":"連擊、裝死、轉換、吸血、亡命一擊、詛咒術、毒擊術","map":"青鳥城外","圖片":"V"}
 				],
@@ -43,6 +44,15 @@ var indexData = new Vue({
 			},
 			components:{"testComp":testComp},
             methods:{
+				boxAdded:function(obj){
+					
+					var arr = this.allPet.filter(function(x){
+						return x.id == obj.id;
+					});
+					this.boxContent = this.boxContent.concat(arr)
+					
+					
+				},
 				showDiv:function(obj){
 					
 					this.divShowStyle = {

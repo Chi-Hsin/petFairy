@@ -7,12 +7,14 @@ var testComp  = Vue.component("bbbb", {
 		  }
 		},
 		computed:{
+		
+			
 		},
 		mounted(){
-			// var obj = {id:"empty"}
-			// for(var i=0;i<5;i++){
-				// this.arr.push(obj)
-			// }
+			var obj = {id:"empty"}
+			for(var i=0;i<50;i++){
+				this.arr.push(obj)
+			}
 		},
 		 template: `<div class="row" style="background:#DEBA72;height:90vh;overflow:auto;">
 						
@@ -33,6 +35,7 @@ var testComp  = Vue.component("bbbb", {
 				})
 
 				this.arr.splice(index,1)
+				this.arr.push({id:"empty"})
 				
 				
 			},
@@ -42,19 +45,8 @@ var testComp  = Vue.component("bbbb", {
 			data1:function(){
 				
 				this.arr.unshift(this.data1);
-				
-				
-				 // console.log(this.arr)
+				this.arr.pop();
 				
 			},
-			// box:function(){
-				// console.log("變動")
-				// var that = this;
-				// this.box.forEach(function(v,i){
-					
-					// that.$set(that.arr,i,v)
-					// that.arr.push(v)
-				// })
-			// },
 		},
       }); 

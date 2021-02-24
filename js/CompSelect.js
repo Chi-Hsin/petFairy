@@ -28,7 +28,7 @@ var testComp  = Vue.component("xxxx", {
 						<div >屬性
 						<span v-for="(v,k) in element">
 						<input type="radio"  :id="'屬性偏向'+v"  :value="element[k]" :data-key="k" name="element"  v-model="elementSelect">
-						<label :for="'屬性偏向'+v" >{{v}}</label></span>
+						<label :for="'屬性偏向'+v" >{{v}}<img src="img/icon/tttt.png"></label></span>
 						</div>
 						<div >物種偏向
 						<span v-for="(v,k) in dir">

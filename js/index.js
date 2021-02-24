@@ -13,7 +13,7 @@ var indexData = new Vue({
 				allPet:petData.allPet,
 				allSkill:skillData.allSkill,
 				allToy:toyData.allToy,
-				boxContent:[],
+				boxContent:{},
 				petFilter:[
 					{"id":212,"name":"黑鼠","level":"10~12","species":"老鼠","speciesDir":"智","element":"闇","skillAmount":3,"str":"14","vit":"14","agi":"16","int":"16","luk":"16","chm":"14","life":"97","drop":"黑鼠卡 黑鼠娃娃 重藤棍 青銅鎧甲 煤 青銅礦 黑色鈕釦","skill":"連擊、裝死、轉換、吸血、亡命一擊、詛咒術、毒擊術","map":"青鳥城外","圖片":"V"}
 				],
@@ -45,14 +45,33 @@ var indexData = new Vue({
 			components:{"testComp":testComp},
             methods:{
 				boxAdded:function(obj){
+					// var condition = this.boxContent.some(function(x){
+						// return x.id == obj.id
+					// })
+					
+					// if(condition){console.log("已有同筆資料");return;}
+					
 					
 					var arr = this.allPet.filter(function(x){
 						return x.id == obj.id;
 					});
-					this.boxContent = this.boxContent.concat(arr)
+					this.boxContent = arr[0];
+					
+					
 					
 					
 				},
+				// boxDeleted:function(id){
+					
+					// var index = this.boxContent.findIndex(function(v){
+						// return v.id == id;
+					// })
+					
+					
+				    // this.boxContent.splice(index,1);
+					
+					
+				// },
 				showDiv:function(obj){
 					
 					this.divShowStyle = {
@@ -100,12 +119,14 @@ var indexData = new Vue({
 					var arr = this.allPet.filter(function(x){
 						return x.name == v;
 					})
-					if(arr.length ==0){return;}
+					if(arr.length ==0){return;}//若沒找到該幻獸 就不往下執行  這行DEBUG用
 					this.detailData = arr[0];
 					// console.log(arr)
 					
 				},
 				showDetailData:function(id){
+					
+					
 					this.detailData = this.allPet[id-1]
 				},
             },

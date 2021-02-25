@@ -26,7 +26,8 @@ var indexData = new Vue({
 				},
 				detailDataSkill:function(){
 					var  skillArray  = this.detailData.skill.split("、");
-					var obj = {};
+					var obj = {id:"",name:""};
+					var arr = [];
 					var skill = this.allSkill;
 					skillArray.forEach(function(x){
 						var aaa = skill.filter(function(y){
@@ -35,9 +36,12 @@ var indexData = new Vue({
 						// console.log(aaa)
 						var aaa = aaa[0].id;
 						
-						obj[aaa] = x;
+						obj.id = aaa;
+						obj.name = x;
+						arr.push(obj);
+						obj = {id:"",name:""};
 					})
-					return obj;
+					return arr;
 					
 					
 				},

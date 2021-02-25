@@ -6,3 +6,7 @@
 .word-wrap {/*文字拉長*/
    min-width:100px;
 }
+
+#navb li:hover img{
+	/* background:url("../img/icon/BBBB.png") no-repeat; */
+}

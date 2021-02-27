@@ -37,7 +37,7 @@ var detailComp  = Vue.component("dddd", {
 		template: `<div class="row"><!-- 寵物詳細資訊 -->
 						<div class="col-5" style="padding:0;justify-content:center;
 							display: flex;flex-direction:column;height:30vh;">
-							<img :src="'img/monster/'+data.pet.id+'.gif'" style="width:100%;" onerror="this.src='img/icon/notFound.gif';"  @mousedown="addPets(data.pet.id,'monster',$event)" @contextmenu.prevent>
+							<img :src="'img/monster/'+data.pet.id+'.gif'" style="width:100%;" onerror="this.src='img/icon/notFound.gif';"  @mousedown="boxAdded('monster',data.pet.id,data.pet.id,'monster',$event)" @contextmenu.prevent>
 						</div>
 						<div class="col-7" style="height:30vh;">
 							{{data.pet.name}}
@@ -82,10 +82,10 @@ var detailComp  = Vue.component("dddd", {
 											</thead>
 											<tbody>
 											<tr v-for="(v,k) in dropForTable">
-											   <td><a href="javascript:;">{{v.first}}</a></td>
-											   <td><a href="javascript:;">{{v.second}}</a></td>
-											   <td><a href="javascript:;">{{v.third}}</a></td>
-											   <td><a href="javascript:;">{{v.forth}}</a></td>
+											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet.id,v.first,'item',$event)" @contextmenu.prevent>{{v.first}}</a></td>
+											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet.id,v.second,'item',$event)" @contextmenu.prevent>{{v.second}}</a></td>
+											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet.id,v.third,'item',$event)" @contextmenu.prevent>{{v.third}}</a></td>
+											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet.id,v.forth,'item',$event)" @contextmenu.prevent>{{v.forth}}</a></td>
 											</tr>
 											</tbody>
 										</table>
@@ -129,12 +129,30 @@ var detailComp  = Vue.component("dddd", {
 						
 					</div>`,
 		methods:{
-			addPets:function(id,type,event){
-				
+			boxAdded:function(type,id,name,species,event){
+				var obj = {id:id,type:type,name:name,species:species}
 				if(event.buttons == 2){
 					
-					// alert("id:"+id+"type:"+type)
-					this.$emit("box-add",{id:id,type:type});
+					if(type=="item"){
+						// 僅開放卡片 娃娃  宇宙奧秘 生命核心  幻獸營養劑的移動 
+						var itemArr = ["幻獸營養劑",,"生命核心","宇宙奧秘"];
+						var condition = itemArr.includes(obj.name) || 
+										obj.name.slice(-1) == "卡" ||
+										obj.name.slice(-2) == "卡片" ||
+										obj.name.slice(-2) == "娃娃";
+						// console.log(itemArr.includes(name),name.slice(-1),name.slice(-2))
+						if(!condition){ 
+							// alert("NO");
+							return;
+						}
+						
+						if(itemArr.includes(name)){obj.id = itemArr.indexOf(obj.name) +1 }
+						if(name.slice(-2) == "卡片" || obj.name.slice(-1) == "卡"){obj.id = 4;}
+						if(obj.name.slice(-2) == "娃娃"){obj.type="monster";obj.species  = "娃娃"}
+						
+					}
+					
+					this.$emit("box-add",obj);
 				}
 			},
 			openSkillList:function(){

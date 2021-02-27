@@ -41,12 +41,12 @@ var testComp  = Vue.component("xxxx", {
 		 template: `<div class="pt-5">
 						<div >名稱<input type='search' v-model="nameSelect" placeholder="輸入名稱關鍵字"></div>
 						<div >掉落<input type='search' v-model="dropSelect" placeholder="輸入掉落物關鍵字"></div>
-						<div ><p>屬性</p>
+						<div >屬性<p>
 						<span v-for="(v,k) in element">
 						<input type="radio"  :id="'屬性偏向'+v.name"  :value="v.name" :data-key="v.name" name="element"  v-model="elementSelect">
 						<label :for="'屬性偏向'+v.name" >{{v.name}}<img :src="v.src"></label></span>
 						</div>
-						<div ><p>物種偏向</p>
+						<div >物種偏向<p>
 						<span v-for="(v,k) in dir">
 						<input type="radio"  :id="'物種偏向'+v.name" :data-key="v.name" name="v.name"   :value="v.name" v-model="speciesDirSelect">
 						<label :for="'物種偏向'+v.name" >{{v.name}}<img :src="v.src"></label></span>

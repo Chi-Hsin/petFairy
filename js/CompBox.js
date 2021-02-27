@@ -4,7 +4,12 @@ var testComp  = Vue.component("bbbb", {
 		 data: function () {
 		  return {
 			arr:[],
-			// arr2:[]
+			colorGray:{
+				filter:"grayscale(100%)"
+			},
+			colorable:{
+				filter:"grayscale(0)"
+			},
 		  }
 		},
 		computed:{
@@ -16,11 +21,11 @@ var testComp  = Vue.component("bbbb", {
 					aaa.pop();
 				}
 				return aaa
-			}
+			},
 			
 		},
 		mounted(){
-			var obj = {id:"empty"}
+			var obj = {id:"empty",type:"monster"}
 			for(var i=0;i<50;i++){
 				this.arr.push(obj)
 			}
@@ -29,11 +34,16 @@ var testComp  = Vue.component("bbbb", {
 						
 						<div class="col-4 pt-2" v-for="(v,k) in arr2" style="background:url('CCC.png') no-repeat;background-size:contain;height:15vh;">
 							
-							<img :src="'img/monster/'+v.id+'.gif'" style="width:100%;filter:grayscale(100%)" @click="showDetail(v.id)" @contextmenu.prevent @mousedown="removeItem(v.id,$event)">
+							<img :src="'img/'+v.type+'/'+v.id+'.gif'" style="width:100%;" :xyz="v.species" :style="grayScalable(v.type,v.species)" @click="showDetail(v.id)" @contextmenu.prevent @mousedown="removeItem(v.id,$event)"
+							@dragstart="petDrag(v.id,$event)">
 							
 						</div>
 					</div>`,
 		methods:{
+			grayScalable:function(type,species){
+				return type=="monster" && species!= "娃娃"  ?this.colorGray: this.colorable
+			},
+			
 			showDetail:function(id){
 				this.$emit("show-detail",id);
 			},
@@ -48,6 +58,10 @@ var testComp  = Vue.component("bbbb", {
 				this.$emit("remove-item",id)
 				
 				
+			},
+			petDrag:function(id,event){
+				this.$emit("pet-drag",id)
+				// event.dataTransfer.setData("data-dataInfo",id);
 			},
 			
 		},

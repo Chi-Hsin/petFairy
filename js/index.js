@@ -15,6 +15,7 @@ var indexData = new Vue({
 				allToy:toyData.allToy,
 				boxContent:[],
 				petDropData:{},//從BOX拉過來的物品資料
+				fusionResult:{},
 				petFilter:[
 					{"id":212,"name":"黑鼠","level":"10~12","species":"老鼠","speciesDir":"智","element":"闇","skillAmount":3,"str":"14","vit":"14","agi":"16","int":"16","luk":"16","chm":"14","life":"97","drop":"黑鼠卡 黑鼠娃娃 重藤棍 青銅鎧甲 煤 青銅礦 黑色鈕釦","skill":"連擊、裝死、轉換、吸血、亡命一擊、詛咒術、毒擊術","map":"青鳥城外","圖片":"V"}
 				],
@@ -50,10 +51,39 @@ var indexData = new Vue({
 			},
 			components:{"testComp":testComp},
             methods:{
-				petDrag:function(id){
+				fusionResultSend:function(obj){
+					var arr = [obj.father,obj.mother];
+					var arr2 = this.allPet.filter(function(v){
+						return v.species + v.element == obj.father.species + obj.mother.element
+							|| v.species + v.element == obj.mother.species + obj.father.element
+					})
+					arr2.forEach(function(v,i,a){
+						a[i] = Object.assign(v,{type:"monster"});
+						arr.push(a[i]);
+					})
+					
+					
+					var newArr = arr.filter(function(v,i,a){
+						return a.indexOf(v) == i;
+					})
+					
+					if(JSON.stringify(newArr[0]) == JSON.stringify(newArr[1])){
+						//基本上如果符合這情況就是  父母物種屬性完全一模一樣
+						newArr = [newArr[0]]
+					}
+					
+					this.fusionResult = {
+						allResult:newArr,
+						item:obj.item,
+						inherit:obj.inherit.element + "+" + obj.inherit.speciesDir
+					};
+					
+					
+				},
+				petDrag:function(obj){
 					// alert(id)
 					// alert(id)
-					this.petDropData = id;
+					this.petDropData = obj;
 				},
 				boxAdded:function(obj){
 					// console.log(obj)
@@ -61,7 +91,7 @@ var indexData = new Vue({
 						arr = this.allPet.filter(function(x){
 							return x.id == obj.id;
 						});
-						var newObj = Object.assign({type:'monster'},arr[0]);
+						var newObj = Object.assign(arr[0],{type:'monster'});
 						this.boxContent.push(newObj);
 					}
 					else{//傳物品

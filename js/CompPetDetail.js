@@ -37,7 +37,7 @@ var detailComp  = Vue.component("dddd", {
 		template: `<div class="row"><!-- 寵物詳細資訊 -->
 						<div class="col-5" style="padding:0;justify-content:center;
 							display: flex;flex-direction:column;height:30vh;">
-							<img :src="'img/monster/'+data.pet.id+'.gif'" style="width:100%;" onerror="this.src='img/icon/notFound.gif';"  @mousedown="boxAdded('monster',data.pet.id,data.pet.id,'monster',$event)" @contextmenu.prevent>
+							<img :src="'img/monster/'+data.pet.id+'.gif'" style="width:100%;" onerror="this.src='img/icon/notFound.gif';"  @mousedown="boxAdded('monster',data.pet,data.pet.name,'monster',$event)" @contextmenu.prevent>
 						</div>
 						<div class="col-7" style="height:30vh;">
 							{{data.pet.name}}
@@ -82,10 +82,10 @@ var detailComp  = Vue.component("dddd", {
 											</thead>
 											<tbody>
 											<tr v-for="(v,k) in dropForTable">
-											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet.id,v.first,'item',$event)" @contextmenu.prevent>{{v.first}}</a></td>
-											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet.id,v.second,'item',$event)" @contextmenu.prevent>{{v.second}}</a></td>
-											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet.id,v.third,'item',$event)" @contextmenu.prevent>{{v.third}}</a></td>
-											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet.id,v.forth,'item',$event)" @contextmenu.prevent>{{v.forth}}</a></td>
+											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet,v.first,'item',$event)" @contextmenu.prevent>{{v.first}}</a></td>
+											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet,v.second,'item',$event)" @contextmenu.prevent>{{v.second}}</a></td>
+											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet,v.third,'item',$event)" @contextmenu.prevent>{{v.third}}</a></td>
+											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet,v.forth,'item',$event)" @contextmenu.prevent>{{v.forth}}</a></td>
 											</tr>
 											</tbody>
 										</table>
@@ -129,8 +129,15 @@ var detailComp  = Vue.component("dddd", {
 						
 					</div>`,
 		methods:{
-			boxAdded:function(type,id,name,species,event){
-				var obj = {id:id,type:type,name:name,species:species}
+			boxAdded:function(type,obj,name,species,event){
+				var obj ={
+							id:obj.id,
+							element:obj.element,
+							speciesDir:obj.speciesDir,
+							type:type,
+							name:name,
+							species:species
+						}
 				if(event.buttons == 2){
 					
 					if(type=="item"){
@@ -147,7 +154,7 @@ var detailComp  = Vue.component("dddd", {
 						}
 						
 						if(itemArr.includes(name)){obj.id = itemArr.indexOf(obj.name) +1 }
-						if(name.slice(-2) == "卡片" || obj.name.slice(-1) == "卡"){obj.id = 4;}
+						if(name.slice(-2) == "卡片" || obj.name.slice(-1) == "卡"){obj.id = 4;obj.species  = "卡片"}
 						if(obj.name.slice(-2) == "娃娃"){obj.type="monster";obj.species  = "娃娃"}
 						
 					}

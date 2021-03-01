@@ -12,7 +12,7 @@ var testComp  = Vue.component("petfusion", {
 			selectOption:{
 				inherit:{}
 			},
-			test:"",
+			message:"",
 		  }
 		},
 		computed:{
@@ -56,7 +56,7 @@ var testComp  = Vue.component("petfusion", {
 						<div class="row" v-show="itemSelect == '宇宙奧秘'">
 							<div class="col-3"></div>
 							<div class="col-4" style="background:url('CCC.png');no-repeat;background-size:contain;"><img style="width:100%;" onerror="img/icon/notFound.gif" src="img/monster/empty.gif" @drop="petDrop('skillStone',$event)" @dragover="petDragOver($event)"></div>
-						</div>
+						</div>{{message}}
 						<button @click="startFusion">開始融合</button>
 						
 						
@@ -73,21 +73,16 @@ var testComp  = Vue.component("petfusion", {
 				event.preventDefault();
 			},
 			startFusion:function(){
+				this.message = "";
+				
 				//選象勾選  以及道具檢查
-				
-				var arr  = [
-						this.fusionItem.father.element + this.fusionItem.father.species,
-						this.fusionItem.father.element + this.fusionItem.mother.species,
-						this.fusionItem.mother.element + this.fusionItem.father.species,
-						this.fusionItem.mother.element + this.fusionItem.mother.species,
-				];
-				// this.test = arr.filter(function(v,i,a){
-					// return a.indexOf(v) == i;
-				// })
+				if(this.fusionItem.father.id=="empty"){this.message = "缺爸爸";return;}
+				if(this.fusionItem.mother.id=="empty"){this.message = "缺媽媽";return;}
+				if(!this.selectOption.inherit.hasOwnProperty('id')){this.message = "選成長";return;}
 				
 				
-				var obj = {father:this.fusionItem.father,mother:this.fusionItem.mother,item:this.itemSelect,inherit:this.selectOption.inherit}
-				this.$emit("start-fusion",obj)
+				// var obj = {father:this.fusionItem.father,mother:this.fusionItem.mother,item:this.itemSelect,inherit:this.selectOption.inherit}
+				// this.$emit("start-fusion",obj)
 			},
 			
 		},

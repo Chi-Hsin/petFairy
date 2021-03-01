@@ -81,8 +81,8 @@ var testComp  = Vue.component("petfusion", {
 				if(!this.selectOption.inherit.hasOwnProperty('id')){this.message = "選成長";return;}
 				
 				
-				// var obj = {father:this.fusionItem.father,mother:this.fusionItem.mother,item:this.itemSelect,inherit:this.selectOption.inherit}
-				// this.$emit("start-fusion",obj)
+				var obj = {father:this.fusionItem.father,mother:this.fusionItem.mother,item:this.itemSelect,inherit:this.selectOption.inherit}
+				this.$emit("start-fusion",obj)
 			},
 			
 		},

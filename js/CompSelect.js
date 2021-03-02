@@ -25,6 +25,7 @@ var testComp  = Vue.component("xxxx", {
 			elementSelect:"闇",
 			speciesDirSelect:"智",
 			dropSelect:"",
+			mapSelect:"",
 			nameSelect:"黑鼠",
 		  }
 		},
@@ -35,12 +36,14 @@ var testComp  = Vue.component("xxxx", {
 					speciesDirSelect:this.speciesDirSelect,
 					nameSelect:this.nameSelect,
 					dropSelect:this.dropSelect,
+					mapSelect:this.mapSelect
 				}
 			}
 		},
 		 template: `<div class="pt-5">
 						<div >名稱<input type='search' v-model="nameSelect" placeholder="輸入名稱關鍵字"></div>
 						<div >掉落<input type='search' v-model="dropSelect" placeholder="輸入掉落物關鍵字"></div>
+						<div >入手方式<input type='search' v-model="mapSelect" placeholder="輸入地圖或取得出處關鍵字"></div>
 						<div ><p>屬性</p>
 						<span v-for="(v,k) in element">
 						<input type="radio"  :id="'屬性偏向'+v.name"  :value="v.name" :data-key="v.name" name="element"  v-model="elementSelect">
@@ -57,23 +60,7 @@ var testComp  = Vue.component("xxxx", {
 			
 		},
 		watch:{
-			nameSelect:function(){
-				this.select.nameSelect = this.nameSelect;
-			},
-			dropSelect:function(){
-				this.select.dropSelect = this.dropSelect;
-				this.elementSelect = "不限";
-				this.speciesDirSelect = "不限";
-			},
-			elementSelect:function(){
-				this.select.elementSelect = this.elementSelect;
-			},
-			speciesDirSelect:function(){
-				this.select.speciesDirSelect = this.speciesDirSelect;
-			},
 			select:function(){
-					// alert("select update")
-					// console.log(this.select);
 					this.$emit("update-pet",this.select);
 				
 			},

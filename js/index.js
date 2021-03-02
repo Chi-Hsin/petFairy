@@ -8,6 +8,8 @@ var indexData = new Vue({
 					petSearchShow:1,
 					skillListShow:0,
 					toyListShow:0,
+					fusionShow:0,
+					fusionResultShow:0
 					
 				},
 				allPet:petData.allPet,
@@ -133,16 +135,17 @@ var indexData = new Vue({
 					
 					
 				},
-				showDiv:function(obj){
+				showDiv:function(...args){
 					
-					this.divShowStyle = {
-						myBoxShow:arguments[0],
-						petDetailShow:arguments[1],
-						petFilterShow:arguments[2],
-						petSearchShow:arguments[3],
-						skillListShow:arguments[4],
-						toyListShow:arguments[5],
-					}
+					var obj = this.divShowStyle;
+					Object.keys(obj).forEach(function(v,i,a){
+						obj[v] = 0;
+					})
+					
+					args.forEach(function(v,i,a){
+						obj[v] = 1;
+					})
+					
 				},
 				skillSelectFilter:function(value){
 					// alert(value)
@@ -167,13 +170,17 @@ var indexData = new Vue({
 				updatepetfilter:function(val){
 					this.petFilter = this.allPet.filter(function(x){
 						var condition1 = x.name.includes(val.nameSelect);
-						var condition2 = val.dropSelect == "" ? true 
+						var condition2 = val.mapSelect == "" ? true 
+															  :x.map.split("、").some(function(v){
+																 return v.includes(val.mapSelect)
+															  });
+						var condition3 = val.dropSelect == "" ? true 
 															  :x.drop.split(" ").some(function(v){
 																 return v.includes(val.dropSelect)
 															  });
-						var condition3 = val.elementSelect == "不限"? true : x.element == val.elementSelect;
-						var condition4 = val.speciesDirSelect == "不限"? true : x.speciesDir == val.speciesDirSelect;
-						return condition1 && condition2 && condition3 && condition4;
+						var condition4 = val.elementSelect == "不限"? true : x.element == val.elementSelect;
+						var condition5 = val.speciesDirSelect == "不限"? true : x.speciesDir == val.speciesDirSelect;
+						return condition1 && condition2 && condition3 && condition4 && condition5;
 					})
 				},
 				showToyPets:function(v){

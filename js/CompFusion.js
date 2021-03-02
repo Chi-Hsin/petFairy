@@ -32,26 +32,28 @@ var testComp  = Vue.component("petfusion", {
 							<div class="col-4" style="background:url('CCC.png');no-repeat;background-size:contain;"><img style="width:100%;" :src="'img/monster/'+fusionItem.mother.id+'.gif'"  @drop="petDrop('mother',$event)" @dragover="petDragOver($event)"></div>
 						</div>
 						<div class="row">
-							<div class="col-2"><input type="radio"  name="itemSelect" value="幻獸營養劑" v-model="itemSelect"></div>
+							<div class="col-2">
+							<input type="radio"  id="幻獸營養劑選擇" name="itemSelect" value="幻獸營養劑" v-model="itemSelect">
+							</div>
 							<div class="col-10">
-								<p>我要繼承上一代成長能力</p>
+								<p><label for="幻獸營養劑選擇">我要繼承上一代成長能力</label></p>
 								<span v-show="itemSelect == '幻獸營養劑'">成長
-								<input type="radio"   :value="fusionItem.father" v-model="selectOption.dir">父
-								<input type="radio"   :value="fusionItem.mother" v-model="selectOption.dir">母
+								<label><input type="radio"   :value="fusionItem.father" v-model="selectOption.dir">父</label>
+								<label><input type="radio"   :value="fusionItem.mother" v-model="selectOption.dir">母</label>
 								</span>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-2"><input type="radio"  name="itemSelect" value="生命核心" v-model="itemSelect"></div>
+							<div class="col-2"><input type="radio"  id="生命核心選擇" name="itemSelect" value="生命核心" v-model="itemSelect"></div>
 							<div class="col-10">
-								<p>我要自由繼承上一代所有能力</p>
+								<p><label for="生命核心選擇">我要自由繼承上一代所有能力</label></p>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-2"><input type="radio"  name="itemSelect" value="宇宙奧秘" v-model="itemSelect"></div>
+							<div class="col-2"><input type="radio"  id="宇宙奧秘選擇" name="itemSelect" value="宇宙奧秘" v-model="itemSelect"></div>
 							<div class="col-10">
-								<p>我要自由繼承上一代所有能力</p>
-								<p>且添加技能</p>
+								<p><label for="宇宙奧秘選擇">我要自由繼承上一代所有能力</label></p>
+								<p><label for="宇宙奧秘選擇">且添加技能</label></p>
 								
 							</div>
 						</div>
@@ -63,14 +65,14 @@ var testComp  = Vue.component("petfusion", {
 							<div class="col-2"></div>
 							<div class="col-10">
 								<p>成長
-								<input type="radio"   :value="fusionItem.father" v-model="selectOption.dir">父
-								<input type="radio"   :value="fusionItem.mother" v-model="selectOption.dir">母</p>
+								<label><input type="radio"   :value="fusionItem.father" v-model="selectOption.dir">父</label>
+								<label><input type="radio"   :value="fusionItem.mother" v-model="selectOption.dir">母</label></p>
 								<p>屬性
-								<input type="radio"   :value="fusionItem.father" v-model="selectOption.element">父
-								<input type="radio"   :value="fusionItem.mother" v-model="selectOption.element">母</p>
+								<label><input type="radio"   :value="fusionItem.father" v-model="selectOption.element">父</label>
+								<label><input type="radio"   :value="fusionItem.mother" v-model="selectOption.element">母</label></p>
 								<p>物種
-								<input type="radio"   :value="fusionItem.father" v-model="selectOption.species">父
-								<input type="radio"   :value="fusionItem.mother" v-model="selectOption.species">母</p>
+								<label><input type="radio"   :value="fusionItem.father" v-model="selectOption.species"></label>父
+								<label><input type="radio"   :value="fusionItem.mother" v-model="selectOption.species">母</label></p>
 							
 							</div>
 							

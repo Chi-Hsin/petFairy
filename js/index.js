@@ -53,29 +53,51 @@ var indexData = new Vue({
             methods:{
 				fusionResultSend:function(obj){
 					var arr = [obj.father,obj.mother];
-					var arr2 = this.allPet.filter(function(v){
-						return v.species + v.element == obj.father.species + obj.mother.element
-							|| v.species + v.element == obj.mother.species + obj.father.element
-					})
-					arr2.forEach(function(v,i,a){
-						a[i] = Object.assign(v,{type:"monster"});
-						arr.push(a[i]);
-					})
-					
-					
-					var newArr = arr.filter(function(v,i,a){
-						return a.indexOf(v) == i;
-					})
-					
-					if(JSON.stringify(newArr[0]) == JSON.stringify(newArr[1])){
-						//基本上如果符合這情況就是  父母物種屬性完全一模一樣
-						newArr = [newArr[0]]
+					var newArr,inherit;
+					if(obj.item == "幻獸營養劑"){
+					//營養一般融合
+						var inherit = obj.selectOption.dir.element + 
+									"+" + obj.selectOption.dir.speciesDir;
+						var arrNormal = this.allPet.filter(function(v){
+							return v.species + v.element == obj.father.species + obj.mother.element
+								|| v.species + v.element == obj.mother.species + obj.father.element
+						})
+						arrNormal.forEach(function(v,i,a){
+							a[i] = Object.assign(v,{type:"monster"});
+							arr.push(a[i]);
+						})
+						
+						//排除重複結果
+						newArr = arr.filter(function(v,i,a){
+							return a.indexOf(v) == i;
+						})
+						
+						if(JSON.stringify(newArr[0]) == JSON.stringify(newArr[1])){
+							//基本上如果符合這情況就是  父母物種屬性完全一模一樣
+							newArr = [newArr[0]]
+						}
 					}
+					
+					
+					//生命. 奧秘融合
+					if(obj.item == "生命核心" || obj.item == "宇宙奧秘"){
+						var arrExtra = this.allPet.filter(function(v,i,a){
+							return v.element == obj.selectOption.element.element &&
+								  v.species == obj.selectOption.species.species
+						})
+						newArr = [arrExtra[0]];
+						inherit = obj.selectOption.dir.element + 
+								"+" +  obj.selectOption.dir.speciesDir
+					
+					}
+					
 					
 					this.fusionResult = {
 						allResult:newArr,
 						item:obj.item,
-						inherit:obj.inherit.element + "+" + obj.inherit.speciesDir
+						inherit:inherit,
+						father:obj.father,
+						mother:obj.mother
 					};
 					
 					

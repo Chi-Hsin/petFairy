@@ -70,7 +70,7 @@ var testComp  = Vue.component("bbbb", {
 				
 			},
 			petDrag:function(obj,event){
-				if(obj.type != "monster" || obj.id == "empty"){return;}
+				if(obj.type != "monster" || obj.id == "empty" ||obj.species == "娃娃"){return;}
 				
 				this.$emit("pet-drag",obj)
 				// event.dataTransfer.setData("data-dataInfo",id);

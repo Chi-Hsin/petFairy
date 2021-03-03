@@ -77,7 +77,7 @@ var testComp  = Vue.component("frfrfr", {
 							<div class="row" v-for="(v,k) in data.allResult">
 								<div class="col-12"><img src="img/icon/woodBack.gif" style="width:100%;"></div>
 								
-								<div class="col-4"><img :src="'img/monster/'+v.id+'.gif'"></div>
+								<div class="col-4"><img :src="'img/monster/'+v.id+'.gif'" onerror="this.src='img/icon/notFound.gif'"></div>
 								<div class="col-8">
 									<p>{{v.name}}</p>
 									<p>屬性：{{v.element}}</p>

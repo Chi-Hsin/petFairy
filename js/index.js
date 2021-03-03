@@ -194,8 +194,18 @@ var indexData = new Vue({
 				},
 				showDetailData:function(id){
 					
+					// var arr = this.allPet.filter(function(v){
+						// return v.id == id;
+					// })
 					
-					this.detailData = this.allPet[id-1]
+					//改用已經篩選過的陣列  再進行篩選  加快速度
+					var arr = this.petFilter.filter(function(v){
+						return v.id == id;
+					})
+					this.detailData = arr[0];
+					
+					
+					
 				},
             },
 			watch:{

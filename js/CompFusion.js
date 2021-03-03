@@ -25,11 +25,11 @@ var testComp  = Vue.component("petfusion", {
 		 template: `<div class="" style="height:90vh;overflow:auto;">
 						<div class="row">
 							<div class="col-3">父系幻獸:</div>
-							<div class="col-4" style="background:url('CCC.png');no-repeat;background-size:contain;"><img style="width:100%;" :src="'img/monster/'+fusionItem.father.id+'.gif'" @drop="petDrop('father',$event)" @dragover="petDragOver($event)"></div>
+							<div class="col-4" style="background:url('CCC.png');no-repeat;background-size:contain;"><img style="width:100%;" :src="'img/monster/'+fusionItem.father.id+'.gif'" onerror="this.src='img/icon/notFound.gif'" @drop="petDrop('father',$event)" @dragover="petDragOver($event)"></div>
 						</div>
 						<div class="row">
 							<div class="col-3">母系幻獸:</div>
-							<div class="col-4" style="background:url('CCC.png');no-repeat;background-size:contain;"><img style="width:100%;" :src="'img/monster/'+fusionItem.mother.id+'.gif'"  @drop="petDrop('mother',$event)" @dragover="petDragOver($event)"></div>
+							<div class="col-4" style="background:url('CCC.png');no-repeat;background-size:contain;"><img style="width:100%;" :src="'img/monster/'+fusionItem.mother.id+'.gif'"  onerror="this.src='img/icon/notFound.gif'" @drop="petDrop('mother',$event)" @dragover="petDragOver($event)"></div>
 						</div>
 						<div class="row">
 							<div class="col-2">

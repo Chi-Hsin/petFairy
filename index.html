@@ -64,7 +64,7 @@
 
 	<!-- 左側道具欄 -->
 	<div class="col-3" v-show="divShowStyle.myBoxShow" style="margin:0;padding:0;background:#DEBA72;height:90vh;overflow:auto;">
-		<bbbb :data1="boxContent" :data2="allPet" @show-detail="showDetailData"
+		<bbbb :data1="boxContent" :data2="allPet" @show-detail="showBoxDetailData"
 		@remove-item="boxDeleted" @pet-drag="petDrag"></bbbb>
 		
 	</div>

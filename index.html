@@ -31,40 +31,43 @@
 		<ul class="navbar-nav mr-auto">
 		
 		  <li class="nav-item" id="petSearch" >
-			<a class="nav-link" href="javascript:;" @click="showDiv('myBoxShow','petDetailShow','petFilterShow','petSearchShow')">幻獸搜尋<img src="img/monster/746.gif" style="height:5vh"></a>
+			<a class="nav-link" href="javascript:;" @click="showDiv('myBoxShow','petDetailShow','petFilterShow','petSearchShow')">幻獸搜尋<img src="img/icon/search.gif"></a>
 		  </li>
 		   <li class="nav-item" id="petMix">
-			<a class="nav-link" href="javascript:;" @click="showDiv('myBoxShow','fusionResultShow','fusionShow')">融合模擬<img src="img/monster/746.gif" style="height:5vh"></a>
+			<a class="nav-link" href="javascript:;" @click="showDiv('myBoxShow','fusionResultShow','fusionShow')">融合模擬<img src="img/icon/fusionSimulate.gif"></a>
 		  </li>
 		  <li class="nav-item" id="skillList">
-			<a class="nav-link" href="javascript:;" @click="showDiv('myBoxShow','petDetailShow','petFilterShow','skillListShow')">技能列表<img src="img/monster/746.gif" style="height:5vh"></a>
+			<a class="nav-link" href="javascript:;" @click="showDiv('myBoxShow','petDetailShow','petFilterShow','skillListShow')">技能列表<img src="img/icon/skill.gif"></a>
 		  </li>
 		  <li class="nav-item" id="specirsList">
-			<a class="nav-link" href="javascript:;">物種列表<img src="img/monster/746.gif" style="height:5vh"></a>
+			<a class="nav-link" href="javascript:;">物種列表<img src="img/icon/species.gif"></a>
 		  </li>
 		  <li class="nav-item" id="toyList">
-			<a class="nav-link" href="javascript:;" @click="showDiv('myBoxShow','petDetailShow','toyListShow')">玩具列表<img src="img/monster/746.gif" style="height:5vh"></a>
+			<a class="nav-link" href="javascript:;" @click="showDiv('myBoxShow','petDetailShow','toyListShow')">玩具列表<img src="img/icon/toy.gif"></a>
+		  </li>
+		  <li class="nav-item" id="tutorialList">
+			<a class="nav-link" href="javascript:;" @click="showDiv('myBoxShow','petDetailShow','toyListShow')">網站說明<img src="img/icon/book.gif"></a>
 		  </li>
 		</ul>
-		<ul class="mb-0 mr-4">
-			<li class="nav-item dropdown">
-			  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-				語言(繁體)
-			  </a>
-			  <div class="dropdown-menu">
-				<a class="dropdown-item" href="#">繁體</a>
-				<a class="dropdown-item" href="#">簡体</a>
-				<a class="dropdown-item" href="#">英文</a>
-			  </div>
-			</li>
-		</ul>
+		<!-- <ul class="mb-0 mr-4"> -->
+			<!-- <li class="nav-item dropdown"> -->
+			  <!-- <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> -->
+				<!-- 語言(繁體) -->
+			  <!-- </a> -->
+			  <!-- <div class="dropdown-menu"> -->
+				<!-- <a class="dropdown-item" href="#">繁體</a> -->
+				<!-- <a class="dropdown-item" href="#">簡体</a> -->
+				<!-- <a class="dropdown-item" href="#">英文</a> -->
+			  <!-- </div> -->
+			<!-- </li> -->
+		<!-- </ul> -->
 	  </div>
 	</nav>
 <div class="row" style="height:90vh;" v-cloak>
 
 	<!-- 左側道具欄 -->
 	<div class="col-3" v-show="divShowStyle.myBoxShow" style="margin:0;padding:0;background:#DEBA72;height:90vh;overflow:auto;">
-		<bbbb :data1="boxContent" :data2="allPet" @show-detail="showBoxDetailData"
+		<bbbb :data1="boxContent" :data2="allPet" @show-detail="[showBoxDetailData($event),showDiv('myBoxShow','petDetailShow','petFilterShow','petSearchShow')]"
 		@remove-item="boxDeleted" @pet-drag="petDrag"></bbbb>
 		
 	</div>
@@ -85,10 +88,12 @@
 			</div>
 			
 		</div>
+		<!--幻獸搜尋選項-->
+		<xxxx @update-pet="updatepetfilter" v-show="divShowStyle.petSearchShow"></xxxx>
 		
-		<xxxx @update-pet="updatepetfilter" v-show="divShowStyle.petSearchShow"></xxxx><!--幻獸搜尋選項-->
+		<!--技能列表-->
 		<ssss :data="allSkill" v-show="divShowStyle.skillListShow" 
-		style="height:65vh;overflow:auto;" @skill-filter="skillSelectFilter"></ssss><!--技能列表-->
+		style="height:65vh;overflow:auto;" @skill-filter="skillSelectFilter"></ssss>
 		
 		<!--玩具列表-->
 		<tttt :data="allToy" v-show="divShowStyle.toyListShow" style="height:90vh;overflow:auto;"  @show-toypets="showToyPets"></tttt>
@@ -111,5 +116,6 @@
 <script src="js/CompFusionResult.js"></script>
 <script src="js/pet.js"></script>
 <script src="js/toy.js"></script>
+<script src="js/species.js"></script>
 <script src="js/skill.js"></script>
 <script src="js/index.js"></script>

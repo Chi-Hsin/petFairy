@@ -8,5 +8,7 @@
 }
 
 #navb li:hover img{
-	/* background-image:url("../img/icon/BBBB.png"); */
+	content:url("../img/icon/pointer.gif");
 }
+
+.nav-link img{height:8vh;}

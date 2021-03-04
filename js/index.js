@@ -15,6 +15,7 @@ var indexData = new Vue({
 				allPet:petData.allPet,
 				allSkill:skillData.allSkill,
 				allToy:toyData.allToy,
+				allSpecies:speciesData.allSpecies,
 				boxContent:[],
 				petDropData:{},//從BOX拉過來的物品資料
 				fusionResult:{},
@@ -168,6 +169,15 @@ var indexData = new Vue({
 				},
 				
 				updatepetfilter:function(val){
+					var arr = JSON.parse(JSON.stringify(val.skillSelect));
+					var magicIndex = arr.indexOf("能學法術");
+					if(magicIndex != -1){
+						var arr2 = this.allSpecies.filter(function(x){
+							return x.magic == 1;
+						})
+						arr.splice(magicIndex,1);
+					}
+					
 					this.petFilter = this.allPet.filter(function(x){
 						var condition1 = x.name.includes(val.nameSelect);
 						var condition2 = val.mapSelect == "" ? true 
@@ -178,10 +188,24 @@ var indexData = new Vue({
 															  :x.drop.split(" ").some(function(v){
 																 return v.includes(val.dropSelect)
 															  });
-						var condition4 = val.elementSelect == "不限"? true : x.element == val.elementSelect;
-						var condition5 = val.speciesDirSelect == "不限"? true : x.speciesDir == val.speciesDirSelect;
-						return condition1 && condition2 && condition3 && condition4 && condition5;
+						var condition4 = val.elementSelect == "All"? true : x.element == val.elementSelect;
+						var condition5 = val.speciesDirSelect == "All"? true 
+																	  : x.speciesDir == val.speciesDirSelect;
+						
+						
+						
+						var condition6 = val.skillSelect.length == 0 ? true //技能比對
+														: arr.every(function(v,i,a){	
+															return x.skill.split("、").includes(v)
+														})
+						//法術是否能學習比對
+						var condition7 = magicIndex == -1 ? true  
+																	: arr2.some(function(v){
+																		return v.type == x.species;
+																	}); 								
+						return condition1 && condition2 && condition3 && condition4 && condition5 && condition6 && condition7;
 					})
+					console.log(arr.length);
 				},
 				showToyPets:function(v){
 					var arr = this.allPet.filter(function(x){
@@ -214,6 +238,9 @@ var indexData = new Vue({
 					})
 					this.detailData = arr[0];
 					
+				},
+				testttt:function(){
+					alert()
 				},
             },
 			watch:{

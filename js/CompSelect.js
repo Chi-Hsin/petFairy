@@ -46,28 +46,37 @@ var testComp  = Vue.component("xxxx", {
 				}
 			}
 		},
-		 template: `<div class="row pt-3" style="height:65vh;overflow:auto;">
+		 template: `<div class="row" style="height:65vh;overflow:auto;">
 						<div class="col-3">
-							<p>物種偏向</p>
-							<p v-for="(v,k) in dir">
-							<input type="radio"  :id="'物種偏向'+v.name" :data-key="v.name" name="v.name"   :value="v.name" v-model="speciesDirSelect">
-							<label :for="'物種偏向'+v.name" >{{v.name}}<img :src="v.src"></label></p>
+							<div class="row" style="height:65vh;">
+								<div>物種偏向</div>
+								<p  v-for="(v,k) in dir">
+								<input type="radio"  :id="'物種偏向'+v.name" :data-key="v.name" name="v.name"   :value="v.name" v-model="speciesDirSelect">
+								<label :for="'物種偏向'+v.name" ><img :src="v.src">{{v.name}}</label></p>
+							</div>
 							
 						</div>
 						<div class="col-3">
-							<p>屬性</p>
-							<div class="col" v-for="(v,k) in element">
-							<input type="radio"  :id="'屬性偏向'+v.name"  :value="v.name" :data-key="v.name" name="element"  v-model="elementSelect">
-							<label :for="'屬性偏向'+v.name" >{{v.name}}<img :src="v.src"></label></div>
+							<div class="row" style="height:65vh;">
+								<div>屬性選擇</div>
+								<div v-for="(v,k) in element">
+								<input type="radio"  :id="'屬性偏向'+v.name"  :value="v.name" :data-key="v.name" name="element"  v-model="elementSelect">
+								<label :for="'屬性偏向'+v.name" ><img :src="v.src">{{v.name}}</label></div>
+							</div>
 							
 						</div>
 						<div class="col-6" @contextmenu.prevent @mousedown="selectAllSkill($event)">
-							<div>名稱<input type='search' v-model="nameSelect" placeholder="輸入名稱關鍵字"></div>
-							<div>掉落<input type='search' v-model="dropSelect" placeholder="輸入掉落物關鍵字"></div>
-							<div>出處<input type='search' v-model="mapSelect" placeholder="輸入取得出處關鍵字"></div>
-							<span  class="mr-3" v-for="(v,k) in skillOption">
+							<div class="row" style="height:25vh;">
+								<div>名稱<input type='search' v-model="nameSelect" placeholder="輸入名稱關鍵字"></div>
+								<div>掉落<input type='search' v-model="dropSelect" placeholder="輸入掉落物關鍵字"></div>
+								<div>出處<input type='search' v-model="mapSelect" placeholder="輸入取得出處關鍵字"></div>
+							</div>
+							<div class="row" style="height:40vh;">
+								<span  class="mr-3" v-for="(v,k) in skillOption">
 								<label><input type="checkbox" :id="'skillOption'+v" :value="v" v-model="skillSelect">{{v}}</label>
-							</span>
+								</span>
+							</div>
+							
 							
 						</div>
 						<div class="col-1"></div>

@@ -142,7 +142,7 @@ var detailComp  = Vue.component("dddd", {
 					
 					if(type=="item"){
 						// 僅開放卡片 娃娃  宇宙奧秘 生命核心  幻獸營養劑的移動 
-						var itemArr = ["幻獸營養劑",,"生命核心","宇宙奧秘"];
+						var itemArr = ["幻獸營養劑","生命核心","宇宙奧秘"];
 						var condition = itemArr.includes(obj.name) || 
 										obj.name.slice(-1) == "卡" ||
 										obj.name.slice(-2) == "卡片" ||
@@ -154,6 +154,7 @@ var detailComp  = Vue.component("dddd", {
 						}
 						
 						if(itemArr.includes(name)){obj.id = itemArr.indexOf(obj.name) +1 }
+						console.log(obj.id);
 						if(name.slice(-2) == "卡片" || obj.name.slice(-1) == "卡"){obj.id = 4;obj.species  = "卡片"}
 						if(obj.name.slice(-2) == "娃娃"){obj.type="monster";obj.species  = "娃娃"}
 						

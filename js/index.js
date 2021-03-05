@@ -169,6 +169,12 @@ var indexData = new Vue({
 				},
 				
 				updatepetfilter:function(val){
+					if(val.nameSelect == "" && val.mapSelect == "" && val.dropSelect == "" && 
+						val.elementSelect == "All" && val.speciesDirSelect == "All" && 
+						val.skillSelect.length == 0){this.petFilter = [];return;}
+					
+					
+					
 					var arr = JSON.parse(JSON.stringify(val.skillSelect));
 					var magicIndex = arr.indexOf("能學法術");
 					if(magicIndex != -1){
@@ -200,12 +206,12 @@ var indexData = new Vue({
 														})
 						//法術是否能學習比對
 						var condition7 = magicIndex == -1 ? true  
-																	: arr2.some(function(v){
-																		return v.type == x.species;
-																	}); 								
-						return condition1 && condition2 && condition3 && condition4 && condition5 && condition6 && condition7;
+														: arr2.some(function(v){
+															return v.type == x.species;
+														}); 								
+						return condition1 && condition2 && condition3 &&
+								condition4 && condition5 && condition6 && condition7;
 					})
-					console.log(arr.length);
 				},
 				showToyPets:function(v){
 					var arr = this.allPet.filter(function(x){

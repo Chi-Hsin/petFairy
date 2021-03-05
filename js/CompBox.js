@@ -6,10 +6,10 @@ var testComp  = Vue.component("bbbb", {
 			arr:[
 				
 			],
-			colorGray:{
+			colorGray:{ //幻獸顏色是灰白
 				filter:"grayscale(100%)"
 			},
-			colorable:{
+			colorable:{ //其他道具物品維持原色
 				filter:"grayscale(0)"
 			},
 		  }
@@ -51,12 +51,7 @@ var testComp  = Vue.component("bbbb", {
 			},
 			removeItem:function(id,event){
 				 if(id=="empty" || event.button != 2){return;}
-				var index = this.arr.findIndex(function(v){
-					return v.id == id;
-				})
-
-				// this.arr.splice(index,1)
-				// this.arr.push({id:"empty"})
+				
 				this.$emit("remove-item",id)
 				
 				

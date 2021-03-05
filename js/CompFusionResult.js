@@ -71,7 +71,10 @@ var testComp  = Vue.component("frfrfr", {
 						<div v-show="resultAppeared == ''">體驗融合的樂趣吧</div>
 						<div class="col-12">
 							<div class="row" v-show="resultAppeared != ''">
-							<div class="col-12" style="text-align:center"><h3>可能產出結果分析</h3></div>
+							<div class="col-12" style="text-align:center">
+								<h3>可能產出結果分析</h3>
+								你使用了融合道具：{{data.item}}
+							</div>
 							
 							</div> 
 							<div class="row" v-for="(v,k) in data.allResult">

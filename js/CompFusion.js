@@ -1,6 +1,6 @@
 var testComp  = Vue.component("petfusion", {
 	
-         props:["data"],
+         props:["data","data2"],
 		 data: function () {
 		  return {
 			fusionItem:{
@@ -10,26 +10,34 @@ var testComp  = Vue.component("petfusion", {
 			},
 			itemSelect:"幻獸營養劑",
 			selectOption:{
-				dir:{},
-				element:{},
-				species:{}
+				dir:{}, //繼承能力成長父或母(營養、核心、奧秘)
+				element:{},//繼承屬性父或母(核心、奧秘)
+				species:{}//繼承物種父或母(核心、奧秘)
 			},
 			message:"",
 		  }
 		},
 		computed:{
-			select:function(){
-			
-			}
+			itemRequired:function(){
+				if(this.itemSelect == "幻獸營養劑"){
+					var name = this.selectOption.dir.name || "";
+					var doll = name + "娃娃";
+					var card = name + "卡";
+					return [this.itemSelect,doll,card];
+				}
+				else if(this.itemSelect == "生命核心" ||
+						this.itemSelect == "宇宙奧秘"){
+					return [this.itemSelect];
+				}
+			},
 		},
 		 template: `<div class="" style="height:90vh;overflow:auto;">
+		
 						<div class="row">
 							<div class="col-3">父系幻獸:</div>
-							<div class="col-4" style="background:url('CCC.png');no-repeat;background-size:contain;"><img style="width:100%;" :src="'img/monster/'+fusionItem.father.id+'.gif'" onerror="this.src='img/icon/notFound.gif'" @drop="petDrop('father',$event)" @dragover="petDragOver($event)"></div>
-						</div>
-						<div class="row">
+							<div class="col-3" style="background:url('CCC.png') ;background-repeat:no-repeat;background-size:contain;"><img style="width:100%;" :src="'img/monster/'+fusionItem.father.id+'.gif'" onerror="this.src='img/icon/notFound.gif'" @drop="petDrop('father',$event)" @dragover="petDragOver($event)"></div>
 							<div class="col-3">母系幻獸:</div>
-							<div class="col-4" style="background:url('CCC.png');no-repeat;background-size:contain;"><img style="width:100%;" :src="'img/monster/'+fusionItem.mother.id+'.gif'"  onerror="this.src='img/icon/notFound.gif'" @drop="petDrop('mother',$event)" @dragover="petDragOver($event)"></div>
+							<div class="col-3" style="background:url('CCC.png');background-repeat:no-repeat;background-size:contain;"><img style="width:100%;" :src="'img/monster/'+fusionItem.mother.id+'.gif'"  onerror="this.src='img/icon/notFound.gif'" @drop="petDrop('mother',$event)" @dragover="petDragOver($event)"></div>
 						</div>
 						<div class="row">
 							<div class="col-2">
@@ -97,19 +105,25 @@ var testComp  = Vue.component("petfusion", {
 			startFusion:function(){
 				this.message = "";
 				
-				//選項勾選  以及道具檢查
+				//選項勾選檢查
 				if(this.fusionItem.father.id=="empty"){this.message = "缺爸爸";return;}
 				if(this.fusionItem.mother.id=="empty"){this.message = "缺媽媽";return;}
 				if(!this.selectOption.dir.hasOwnProperty('id')){this.message = "選成長";return;}
 				if(JSON.stringify(this.fusionItem.father) == JSON.stringify(this.fusionItem.mother))
 				{this.message = "爸媽一樣";return;}
 				
-				//如果生命或奧秘 需要進行屬性與物種的勾選
+				//生命或奧秘 需要進行屬性與物種的勾選
 				if(this.itemSelect == "生命核心" || this.itemSelect == "宇宙奧秘"){
 					if(!this.selectOption.element.hasOwnProperty('id')){this.message = "選屬性";return;}
 					if(!this.selectOption.species.hasOwnProperty('id')){this.message = "選物種";return;}
-					
 				}
+				
+				//背包道具檢查
+				var box = this.data2.map(x => x.name);
+				var boxCheck = this.itemRequired.every(function(v,i,a){
+					return box.includes(v);
+				})
+				if(!boxCheck){this.message = "有缺道具";return;}
 				
 				
 				var obj = {

@@ -12,3 +12,26 @@
 }
 
 .nav-link img{height:8vh;}
+
+.modal-dialog{
+	/* height:50vh; */
+}
+.modal-body{
+	overflow-y: auto;
+	padding:0;
+}
+.modal-body .container-fluid{
+	/* width:100%; */
+	height:80vh;
+	padding:0;
+	background:url("../img/icon/bigbook.gif");
+	background-position:center center;
+	background-repeat:no-repeat;
+	background-size:contain;
+}
+.modal-body img{height:100%;}
+
+
+
+/* .modal-body tbody tr:hover{background:rgba(0,0,255,0.2)} */
+

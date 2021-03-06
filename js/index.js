@@ -125,10 +125,10 @@ var indexData = new Vue({
 					
 					
 				},
-				boxDeleted:function(id){
+				boxDeleted:function(name){
 					
 					var index = this.boxContent.findIndex(function(v){
-						return v.id == id;
+						return v.name == name;
 					})
 					
 					

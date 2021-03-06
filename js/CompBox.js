@@ -33,10 +33,10 @@ var testComp  = Vue.component("bbbb", {
 			}
 		},
 		 template: `<div class="row" style="background:#DEBA72;height:90vh;overflow:auto;">
-						
+		 
 						<div class="col-4 pt-2" v-for="(v,k) in arr2" style="background:url('CCC.png') no-repeat;background-size:contain;height:15vh;">
 							
-							<img :src="'img/'+v.type+'/'+v.id+'.gif'" style="width:100%;" :style="grayScalable(v.type,v.species)" @click="showDetail(v.id)" @contextmenu.prevent @mousedown="removeItem(v.id,$event)"
+							<img :src="'img/'+v.type+'/'+v.id+'.gif'" style="width:100%;" :style="grayScalable(v.type,v.species)" @click="showDetail(v.id)" @contextmenu.prevent @mousedown="removeItem(v.id,v.name,$event)"
 							@dragstart="petDrag(v,$event)" onerror="this.src='img/icon/notFound.gif'">
 							
 						</div>
@@ -49,10 +49,10 @@ var testComp  = Vue.component("bbbb", {
 			showDetail:function(id){
 				this.$emit("show-detail",id);
 			},
-			removeItem:function(id,event){
+			removeItem:function(id,name,event){
 				 if(id=="empty" || event.button != 2){return;}
 				
-				this.$emit("remove-item",id)
+				this.$emit("remove-item",name)
 				
 				
 			},

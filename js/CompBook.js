@@ -33,27 +33,14 @@ var bookComp  = Vue.component("book-tutorial", {
 								{name:"進階功能",sceneNumber:12}
 							   ],
 					"融合模擬":[
-								{name:"歷史起源",sceneNumber:1},
-								{name:"基本介紹",sceneNumber:1}
+								{name:"歷史起源",sceneNumber:13},
+								{name:"基本介紹",sceneNumber:16}
 								
 							   ],
-					"技能列表":[
-								{name:"基本介紹",sceneNumber:1},
-								{name:"其他功能",sceneNumber:1}
-							   ],
-					"玩具列表":[
-								{name:"基本介紹",sceneNumber:1},
-								{name:"進階功能",sceneNumber:1}
-							   ],	
 					"背包與詳細資訊":[
 								{name:"基本介紹",sceneNumber:1},
 								{name:"進階功能",sceneNumber:1}
-							   ],
-					"物種列表":[
-								{name:"A",sceneNumber:1},
-								{name:"B",sceneNumber:1},
-								{name:"C",sceneNumber:1},
-							   ],				
+							   ],			
 				},
 		  }
 		},
@@ -252,9 +239,10 @@ Vue.component("book6", {//幻獸搜尋 進階功能
 	  template: `<div class="row">
 					<dl>
 						<dt>右鍵選擇全部勾選/取消勾選</dt>
-						<dd>- <img src="img/book/20210307_012729.gif"></dd>
+						<dd>- <img src="img/book/20210307_012729.gif" style="width:100%;"></dd>
 						<dt>如果想要尋找稀有寵</dt>
-						<dd>- <img src="img/book/20210307_013209.gif"></dd>
+						<dd>在出沒處打上稀有兩字即可</dd>
+						<dd><img src="img/book/20210307_013209.gif" style="width:100%;"></dd>
 						<dt>注意事項</dt>
 						<dd>- 如果所有篩選選項都是空的，是不會搜索出結果的哦~</dd>
 					</dl>  
@@ -263,11 +251,83 @@ Vue.component("book6", {//幻獸搜尋 進階功能
 	  
 	  
 	  
-Vue.component("book7", {//幻獸模擬 歷史起源
+Vue.component("book7", {//融合模擬 歷史起源
+      props:['data'],
+	  data: function () {
+		return {
+		  content:[
+			{number:13,name:"幻獸營養劑",src:"img/item/1.gif",pre:"你能想像擁有A造型的幻獸，升級走的卻是B 造型幻獸的路線這種夢幻模式嗎?",content:"<p>繼承成長能力算是挺夢幻的一種融合方式，就是保留住融合寵其中一隻的成長屬性</p><p>繼承成長能力就是這樣的一種融合方式，所要準備的材料是「兩隻幻獸、幻獸營養劑、欲保留成長路線的幻獸娃娃一個、該幻獸卡片一張」。</p><p>在這裡舉個『超體黑綿羊』的融合例子吧!首先要準備的是『黑綿羊一隻、派艾波一隻、幻獸營養劑、派艾波卡一張、派艾波娃娃一個』，因為我希望保留住派艾波的純體成長路線，而又是闇系屬性，這樣會變成黑綿羊走的卻是跟派艾波一樣的純體路線，變成一隻超強的體鎧寵，不用擔心會被任何屬性剋，只是這種融合方式有可能會失敗。</p>",footer:"又失敗了的一位玩家默默說道"},
+			{number:14,name:"生命核心",src:"img/item/2.gif",pre:"看清楚了!這就是童話中比四封還要珍貴的超級寶物",content:"<p>何謂究極融合？就是隨心所欲融出自己想要的寵，看著繼承屬性、物種、成長能力的舉例，老是有許多的失敗成分在裡面</p><p>這種究極融法就是將三種的優點合在一起的 究極融合法，所需要的材料當然就是傳說中的生命核心和兩隻寵囉!</p><p>使用生命核心融寵前一定要好好的思考，可不要隨隨便便拿來融呀</p><p>譬如說寶石獸 + 火熊利用生命核心是可以輕輕鬆鬆融出四封寵路比火寶石獸，但是這麼一來生命核心的價值就變得跟一顆四封一樣了。</p><p>『闇貝貝』的融合例子， 所準備的材料有『木頭貝貝一隻、黑狗一隻、生命核心』，至於為什麼用黑狗，因為要融闇系的一定要有隻闇系寵，而黑狗又是屬於三封等級比較高的寵，剛抓到的數值比較好，融出來的闇貝貝起始值會比較高一點。</p>",footer:"某位遺跡開到寶物的玩家說道"},
+			{number:15,name:"宇宙奧秘",src:"img/item/3.gif",pre:"在米斯特里亞平原上，因為對寵物有著無限的熱愛，許多人投身研發寵物相關道具",content:"<p>在經過無數次的實驗與失敗，終於這道具備研發了出來—宇宙奧秘!</p><p>此項突破是由奧茲國幻獸店的裘家四兄妹所發展出來的。他們發現了一種特殊稀有的晶石，可以帶來比生命核心還有效的控制，更強大的融合範圍，以及一出生即可學習到一樣技能。這種晶石被取名為「宇宙奧秘」。</p><p>因為「宇宙奧秘」的研發成功，一些連生命核心都做不到的融合已被證明是可能的了。因此研發者裘家四兄妹在翡翠城裡的幻獸店開設了這一項進階幻獸融合的服務。</p><p>不過要注意的是，宇宙奧秘一樣無法隔代遺傳</p><p>如果經由宇宙奧秘融合出來的幻獸被拿去再次融合，所有宇宙奧秘的效果都會被遺傳的力量洗掉喔～利用宇宙奧秘得來的技能如果該幻獸的物種不會的話，是無法去升級的。</p><p>也就是說，一開始就給學最高等級的技能吧!</p>",footer:"一位吟遊詩人說著遙久前的故事"},
+		  ]
+	  }},
+	  computed:{
+		  nowContent:function(){
+			  var data = this.data || 13;//讀不到就給初始值
+			  var arr = this.content.filter(function(x){
+				  return x.number == data;
+			  }) 
+			  return arr[0]
+		  },
+	  },
+	  template: `<div class="row">
+					
+						<blockquote class="blockquote text-center" style="border-left:5px solid #ccc;">
+						{{nowContent.pre}}
+						  <footer class="blockquote-footer">{{nowContent.footer}}</footer>
+						</blockquote>
+						<img :src="nowContent.src">
+						<p v-html="nowContent.content"></p>
+						
+						// 這裡放石頭對應技能表格
+						
+				</div>`
+});
+
+
+Vue.component("book8", {//融合模擬 基本介紹
       props:['data'],
 	  template: `<div class="row">
-					<h3></h3>
-					<img src="">
-					<p>123</p>
+					<img src="img/book/7.png" style="width:100%;">
+					融合模擬 基本介紹
+				</div>`
+});
+
+Vue.component("book9", {//背包與詳細資訊 基本介紹
+      props:['data'],
+	  template: `<div class="row">
+					<img src="img/book/7.png" style="width:100%;">
+					融合模擬 基本介紹
+				</div>`
+});
+
+Vue.component("book10", {//背包與詳細資訊 基本介紹
+      props:['data'],
+	  template: `<div class="row">
+					<p><img src="img/book/screenshot_20210307_032418.png" style="width:100%;"></p>
+					<p>在背包裡，娃娃的圖都會是彩色</p>
+					<p><img src="img/book/screenshot_20210307_032429.png" style="width:100%;"></p>
+					<p>幻獸則是黑白顯示</p>
+					<p><img src="img/book/screenshot_20210307_032452.png" style="width:100%;"></p>
+					<p>卡片則是會長這樣</p>
+					
+					<p>在進行融合模擬的時候，可能需要這些道具</p>
+					<p>至於怎麼取得?去找吧!我都放在網站裡了~</p>
+				</div>`
+});
+
+
+Vue.component("book11", {//背包與詳細資訊 進階功能
+      props:['data'],
+	  template: `<div class="row">
+					<dl>
+						<dt>右鍵取消</dt>
+						<dd>- <img src="img/book/20210307_012729.gif" style="width:100%;"></dd>
+						<dt>如果想要尋找稀有寵</dt>
+						<dd>在出沒處打上稀有兩字即可</dd>
+						<dd><img src="img/book/20210307_013209.gif" style="width:100%;"></dd>
+						<dt>注意事項</dt>
+						<dd>- 如果所有篩選選項都是空的，是不會搜索出結果的哦~</dd>
+					</dl>  
 				</div>`
 });

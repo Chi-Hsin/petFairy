@@ -15,7 +15,7 @@ var testComp  = Vue.component("petfusion", {
 				species:{}//繼承物種父或母(核心、奧秘)
 			},
 			message:"",
-			itemLost:[],
+			itemLost:"",
 		  }
 		},
 		computed:{
@@ -39,6 +39,9 @@ var testComp  = Vue.component("petfusion", {
 							<div class="col-3" style="background:url('CCC.png') ;background-repeat:no-repeat;background-size:contain;"><img style="width:100%;" :src="'img/monster/'+fusionItem.father.id+'.gif'" onerror="this.src='img/icon/notFound.gif'" @drop="petDrop('father',$event)" @dragover="petDragOver($event)"></div>
 							<div class="col-3">母系幻獸:</div>
 							<div class="col-3" style="background:url('CCC.png');background-repeat:no-repeat;background-size:contain;"><img style="width:100%;" :src="'img/monster/'+fusionItem.mother.id+'.gif'"  onerror="this.src='img/icon/notFound.gif'" @drop="petDrop('mother',$event)" @dragover="petDragOver($event)"></div>
+						</div>
+						<div class="row" style="color:red;">
+								<div class="col-6">{{message}}</div>
 						</div>
 						<div class="row">
 							<div class="col-2">
@@ -87,7 +90,7 @@ var testComp  = Vue.component("petfusion", {
 							
 						</div>
 						
-						{{message}}
+						
 						<button @click="startFusion">開始融合</button>
 						
 						
@@ -121,19 +124,17 @@ var testComp  = Vue.component("petfusion", {
 				
 				//背包道具檢查
 				var box = this.data2.map(x => x.name);
-				var itemLost = "";
-				this.itemLost = [];
+				var itemLost = this.itemLost;
+				itemLost = "";
 				var boxCheck = this.itemRequired.every(function(v,i,a){
 					if(!box.includes(v)){itemLost = v;}
 					return box.includes(v);
 				})
 				if(!boxCheck){
-						for(var i=0;i<=this.itemRequired.length-1-this.itemRequired.indexOf(itemLost);i++){
-							this.itemLost.push(this.itemRequired[i])
-						}
 						// console.log(arrLost);
-						this.message = "缺少道具" + this.itemLost.join("、");
-						return;}
+						this.message = "缺少道具" + itemLost;
+						return;
+					}
 				
 				
 				var obj = {

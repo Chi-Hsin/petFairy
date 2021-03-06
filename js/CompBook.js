@@ -20,6 +20,9 @@ var bookComp  = Vue.component("book-tutorial", {
 					{number:13,scene:"book7"},
 					{number:14,scene:"book7"},
 					{number:15,scene:"book7"},
+					{number:16,scene:"book8"},
+					{number:17,scene:"book9"},
+					{number:18,scene:"book10"}
 				],
 				catalogList:{
 					"關於本站":[
@@ -38,8 +41,8 @@ var bookComp  = Vue.component("book-tutorial", {
 								
 							   ],
 					"背包與詳細資訊":[
-								{name:"基本介紹",sceneNumber:1},
-								{name:"進階功能",sceneNumber:1}
+								{name:"基本介紹",sceneNumber:17},
+								{name:"進階功能",sceneNumber:18}
 							   ],			
 				},
 		  }
@@ -161,7 +164,21 @@ Vue.component("book2", {//開頭的老鼠
       props:['data'],
 	  template: `<div class="row">
 					<img src="img/book/6.png" style="width:100%;">
-					簡劇必開理錢眼後認近龍支商曾近你老。意身人老論過益在是：指應起斷但傳們行：國到道晚能吃數太樂與我此去效車一海得有演成學眾個回。回物現代便顯學法斷字石：灣決洲少金相室女、基養一風世合我一生聞或大開任候！他太教後引可笑怎來參，室須斷進生；去學。
+					<p>(非當事鼠)</p>
+					<p>在寫這網站的期間，家裡有不少老鼠出沒。</p>
+					<p>家人是很討厭牠們的，放了很黏的板子去黏牠，而沒想到一個禮拜之後，真的抓到了。</p>
+					<p>但是我希望放牠走，牠也沒做錯什麼，找食物也是牠的本能</p>
+					<h3>我要說，那個板子真的超黏的</h3>
+					<p>當然防疫期間，也還是要戴口罩跟手套，而我第一次沒經驗，不知道怎麼救老鼠，雖然很小力但還是有點強行掰開，聽到淒厲的叫聲當下，我真的好難過。</p>
+					
+					<p>還好母親於心不忍，幫我拿過來了油</p>
+					<p>握著牠小小的身體，牠心臟抖得很厲害，可能以為我要對牠做什麼可怕的事吧....</p>
+					<p>油對黏性很高的東西真的有用，沒弄幾下，牠就火速掙脫了</p>
+					<p>但是牠真的傷太厲害，兩天後我在牠跑走的不遠處看到牠的冰冷冷身體。</p>
+					
+					<p>童話沒有天生的灰色老鼠，我僅以黑色老鼠代表牠</p>
+					<p>至少還有人記得你存在過。可愛的小老鼠</p>
+					
 				</div>`
 });
 
@@ -170,11 +187,11 @@ Vue.component("book3", {//素材來源
       props:['data'],
 	  template: `<div class="row">
 					<div class="col-6"><img src="img/book/7.png" style="width:100%;"></div>
-					<div class="col-6"><a href="javascript:;">室須斷進生</a></div>
+					<div class="col-6"><a href="javascript:;">敗家一族</a></div>
 					<div class="col-6"><img src="img/book/8.png" style="width:100%;"></div>
-					<div class="col-6"><a href="javascript:;">室須斷進生</a></div>
+					<div class="col-6"><a href="javascript:;">Ironwolves</a></div>
 					<div class="col-6"><img src="img/book/9.png" style="width:100%;"></div>
-					<div class="col-6"><a href="javascript:;">室須斷進生</a></div>
+					<div class="col-6"><a href="javascript:;">童話Online●遊●記</a></div>
 				</div>`
 });
 
@@ -184,13 +201,13 @@ Vue.component("book4", {//感謝
 	  data: function () {
 		  return {
 			content:[
-			  {number:4,name:"米古露托普",content:"<p>謝謝你在我需要的時候給予我幫助  這個網站也因為你的鼓勵而能繼續下去，你說很漂亮的網站，我很感激有你的鼓勵</p><p>被你帶過  還教了一些遊戲上的技巧，就算半夜也不厭其煩的教我，你真的是個很溫暖的人</p>"},
-			  {number:5,name:"光創",content:"<p>謝謝你家族的引入，這麼有趣有人情味的家族。</p><p>還有為族人們提供好用的棒子，不計成本、無怨無悔的付出，家族人一定都感受的到的。</p>"},
-			  {number:6,name:"紅桃姊姊",content:"<p>第一次遇到你是在金銀城閒逛，那個時候不知道要做什麼(其實是沒有人帶)</p><p>你帶我跑去荷花池塘那邊玩，咦不對，好像是罐頭地道的樣子，那張地圖真的很有趣</p><p>之後好像就因為彩虹橋剛好有記點，越來越熟，現在想來，光使還真的是蠻好認識朋友的職業。</p>"},
-			  {number:7,name:"原石生意",content:"<p>時間是發生在蹲出彩虹橋前</p><p>地點在伊利村的地下室</p><p>你現在可能沒在玩了，不管如何，真的謝謝你幫助在地下室偶遇你的我，提供給我棒子販賣，讓我有一些錢可以買更多棒子，對沒祝福卡的我來說真的幫助太大了。</p>"},
-			  {number:8,name:"獵人1",content:"<p>時間是發生在蹲出彩虹橋前</p><p>地點在伊利村的地下室</p><p><p>對，我同時在地下室遇到兩個幫助我的人，這是第二個，在知道我不了解童話後，毅然決然的提出帶我的邀請。</p><p>雖然我馬上拒絕，我想要體驗遊戲(現在看來根本就是地獄難度)，但是過不久我還是請他帶我，因為威彩的經驗實在太香。</p><p>老師，我不想努力了。</p>"},
-			  {number:9,name:"鵝寶寶",content:"<p>這是關於2萬可因的故事。</p><p>我那個時候差點不想玩了，真的就差一點點，這是我第一個，玩到新手初期就開始缺錢玩不下去的遊戲，沒辦法青竹棍140可因好貴，你給我的幫助真的是及時雨，即使這點錢放在現在可能不算什麼</p><p>後來還有給你帶，還有一起蹲地下室(我是後腿的那個)，我忘不了。</p>"},
-			  {number:10,name:"黑罐仔裝醬油",content:"<p>光使很難長大，因為有你的帶練，我等級才能上去，才能去遊戲更多地圖，你真的是名副其實的醬油爸爸。</p><p>每當有團可以練的時候，你總是會問我，真的糾甘心。</p><p>你每次上Discord我都會去聽唷~因為你講話真的很風趣，沒有你在的Discord就像少了一種味道。</p><p>恩，醬油的醍醐味。</p>"},
+			  {number:4,name:"米古露托普",content:"<p>謝謝你在我需要的時候給予我幫助  這個網站也因為你的鼓勵而能繼續下去，你說很漂亮的網站，我很感激有你的鼓勵</p><p>被你帶過  還教了一些遊戲上的技巧，就算半夜也不厭其煩的教我，你真的是個很溫暖的人</p>",src:"img/book/screenshot_20210222_221817.png"},
+			  {number:5,name:"光創",content:"<p>謝謝你家族的引入，這麼有趣有人情味的家族。</p><p>還有為族人們提供好用的棒子，不計成本、無怨無悔的付出，家族人一定都感受的到的。</p>",src:"img/book/screenshot_20210222_222649.png"},
+			  {number:6,name:"紅桃姊姊",content:"<p>第一次遇到你是在金銀城閒逛，那個時候不知道要做什麼(其實是沒有人帶)</p><p>你帶我跑去荷花池塘那邊玩，咦不對，好像是罐頭地道的樣子，那張地圖真的很有趣</p><p>之後好像就因為彩虹橋剛好有記點，越來越熟，現在想來，光使還真的是蠻好認識朋友的職業。</p>",src:"img/book/screenshot_20210222_222608.png"},
+			  {number:7,name:"原石生意",content:"<p>時間是發生在蹲出彩虹橋前</p><p>地點在伊利村的地下室</p><p>你現在可能沒在玩了，不管如何，真的謝謝你幫助在地下室偶遇你的我，提供給我棒子販賣，讓我有一些錢可以買更多棒子，對沒祝福卡的我來說真的幫助太大了。</p>",src:"img/book/xyz.jpg"},
+			  {number:8,name:"獵人1",content:"<p>時間是發生在蹲出彩虹橋前</p><p>地點在伊利村的地下室</p><p><p>對，我同時在地下室遇到兩個幫助我的人，這是第二個，在知道我不了解童話後，毅然決然的提出帶我的邀請。</p><p>雖然我馬上拒絕，我想要體驗遊戲(現在看來根本就是地獄難度)，但是過不久我還是請他帶我，因為威彩的經驗實在太香。</p><p>老師，我不想努力了。</p>",src:"img/book/screenshot_20210307_042753.png"},
+			  {number:9,name:"鵝寶寶",content:"<p>這是關於2萬可因的故事。</p><p>我那個時候差點不想玩了，真的就差一點點，這是我第一個，玩到新手初期就開始缺錢玩不下去的遊戲，沒辦法青竹棍140可因好貴，你給我的幫助真的是及時雨，即使這點錢放在現在可能不算什麼</p><p>後來還有給你帶，還有一起蹲地下室(我是後腿的那個)，我忘不了。</p>",src:"img/book/screenshot_20210307_042731.png"},
+			  {number:10,name:"黑罐仔裝醬油",content:"<p>光使很難長大，因為有你的帶練，我等級才能上去，才能去遊戲更多地圖，你真的是名副其實的醬油爸爸。</p><p>每當有團可以練的時候，你總是會問我，真的糾甘心。</p><p>你每次上Discord我都會去聽唷~因為你講話真的很風趣，沒有你在的Discord就像少了一種味道。</p><p>恩，醬油的醍醐味。</p>",src:"img/book/screenshot_20210307_042807.png"},
 			]
 		 }
 	  },
@@ -204,7 +221,8 @@ Vue.component("book4", {//感謝
 		  },
 	  },
 	  template: `<div class="row">
-					<img src="img/book/screenshot_20210222_221817.png" class="img-thumbnail" alt="Cinque Terre">
+					<img :src="nowContent.src" class="img-thumbnail" :alt="nowContent.name"
+					style="width:60%;" onerror="this.src='img/icon/notFound.gif'">
 					{{nowContent.name}}
 					<p v-html="nowContent.content"></p>
 				</div>`
@@ -288,20 +306,20 @@ Vue.component("book7", {//融合模擬 歷史起源
 Vue.component("book8", {//融合模擬 基本介紹
       props:['data'],
 	  template: `<div class="row">
-					<img src="img/book/7.png" style="width:100%;">
-					融合模擬 基本介紹
+					<dl>
+						<dt>父、母的幻獸選擇
+						拖曳背包裡的幻獸</dt>
+						<dd>- <img src="img/book/20210307_035646.gif" style="width:100%;"></dd>
+						<dt>各項選擇，需要背包裡有相對應的道具</dt>
+						<dt>點擊幻獸可以直接查看詳細資訊</dt>
+						
+					</dl>  
 				</div>`
 });
+
+
 
 Vue.component("book9", {//背包與詳細資訊 基本介紹
-      props:['data'],
-	  template: `<div class="row">
-					<img src="img/book/7.png" style="width:100%;">
-					融合模擬 基本介紹
-				</div>`
-});
-
-Vue.component("book10", {//背包與詳細資訊 基本介紹
       props:['data'],
 	  template: `<div class="row">
 					<p><img src="img/book/screenshot_20210307_032418.png" style="width:100%;"></p>
@@ -317,17 +335,15 @@ Vue.component("book10", {//背包與詳細資訊 基本介紹
 });
 
 
-Vue.component("book11", {//背包與詳細資訊 進階功能
+Vue.component("book10", {//背包與詳細資訊 進階功能
       props:['data'],
 	  template: `<div class="row">
 					<dl>
 						<dt>右鍵取消</dt>
-						<dd>- <img src="img/book/20210307_012729.gif" style="width:100%;"></dd>
-						<dt>如果想要尋找稀有寵</dt>
-						<dd>在出沒處打上稀有兩字即可</dd>
-						<dd><img src="img/book/20210307_013209.gif" style="width:100%;"></dd>
+						<dd>- <img src="img/book/20210307_035200.gif" style="width:100%;"></dd>
+						<dt>點擊幻獸可以直接查看詳細資訊</dt>
 						<dt>注意事項</dt>
-						<dd>- 如果所有篩選選項都是空的，是不會搜索出結果的哦~</dd>
+						<dd>- 背包有格子數量限制</dd>
 					</dl>  
 				</div>`
 });

@@ -15,6 +15,7 @@ var testComp  = Vue.component("petfusion", {
 				species:{}//繼承物種父或母(核心、奧秘)
 			},
 			message:"",
+			itemLost:[],
 		  }
 		},
 		computed:{
@@ -120,10 +121,19 @@ var testComp  = Vue.component("petfusion", {
 				
 				//背包道具檢查
 				var box = this.data2.map(x => x.name);
+				var itemLost = "";
+				this.itemLost = [];
 				var boxCheck = this.itemRequired.every(function(v,i,a){
+					if(!box.includes(v)){itemLost = v;}
 					return box.includes(v);
 				})
-				if(!boxCheck){this.message = "有缺道具";return;}
+				if(!boxCheck){
+						for(var i=0;i<=this.itemRequired.length-1-this.itemRequired.indexOf(itemLost);i++){
+							this.itemLost.push(this.itemRequired[i])
+						}
+						// console.log(arrLost);
+						this.message = "缺少道具" + this.itemLost.join("、");
+						return;}
 				
 				
 				var obj = {

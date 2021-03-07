@@ -65,13 +65,13 @@ var testComp  = Vue.component("xxxx", {
 							</div>
 							
 						</div>
-						<div class="col-6" @contextmenu.prevent @mousedown="selectAllSkill($event)">
+						<div class="col-6"  >
 							<div class="row" style="height:25vh;">
 								<div>名稱<input type='search' v-model="nameSelect" placeholder="輸入名稱關鍵字"></div>
 								<div>掉落<input type='search' v-model="dropSelect" placeholder="輸入掉落物關鍵字"></div>
 								<div>出處<input type='search' v-model="mapSelect" placeholder="輸入取得出處關鍵字"></div>
 							</div>
-							<div class="row" style="height:40vh;">
+							<div class="row" style="height:40vh;" @contextmenu.prevent @mousedown="selectAllSkill($event)">
 								<span  class="mr-3" v-for="(v,k) in skillOption">
 								<label><input type="checkbox" :id="'skillOption'+v" :value="v" v-model="skillSelect">{{v}}</label>
 								</span>

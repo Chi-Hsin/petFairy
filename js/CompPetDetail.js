@@ -37,15 +37,18 @@ var detailComp  = Vue.component("dddd", {
 		template: `<div class="row"><!-- 寵物詳細資訊 -->
 						<div class="col-5" style="padding:0;justify-content:center;
 							display: flex;flex-direction:column;height:30vh;">
-							<img :src="'img/monster/'+data.pet.id+'.gif'" style="width:100%;" onerror="this.src='img/icon/notFound.gif';"  @mousedown="boxAdded('monster',data.pet,data.pet.name,'monster',$event)" @contextmenu.prevent>
+							<img :src="'img/monster/'+data.pet.id+'.gif'" style="width:100%;" onerror="this.src='img/icon/notFound.gif';"  @mousedown="boxAdded('monster',data.pet,data.pet.name,'monster',$event)" @contextmenu.prevent data-toggle="tooltip" data-placement="right" title="點擊可以移動至背包">
 						</div>
 						<div class="col-7" style="height:30vh;">
 							{{data.pet.name}}
 							LV:{{data.pet.level}}
-							<p>物種:{{data.pet.species}}</p>
-							<p>屬性:{{data.pet.element}}</p>
-							<p>物種偏向:{{data.pet.speciesDir}}</p>
-							<p>技能格:{{data.pet.skillAmount}}</p>
+							<p>物種:<a href="javascript:;"  data-toggle="tooltip" :title="'點擊尋找物種同樣為'+data.pet.species+'的幻獸'" data-placement="right" @click="findPet('species')">{{data.pet.species}}</a></p>
+							
+							<p>屬性:<a href="javascript:;"  data-toggle="tooltip" :title="'點擊尋找屬性同樣為'+data.pet.element+'的幻獸'" data-placement="right" @click="findPet('element')">{{data.pet.element}}</a></p>
+							
+							<p>物種偏向:<a href="javascript:;"  data-toggle="tooltip" :title="'點擊尋找物種偏向同樣為'+data.pet.speciesDir+'的幻獸'" data-placement="right" @click="findPet('speciesDir')">{{data.pet.speciesDir}}</a></p>
+							
+							<p>技能格:<a href="javascript:;"  data-toggle="tooltip" :title="'點擊尋找技能格同樣為'+data.pet.skillAmount+'的幻獸'" data-placement="right" @click="findPet('skillAmount')">{{data.pet.skillAmount}}</a></p>
 						</div>
 						<div class="col-12">
 							<ul class="nav nav-tabs">
@@ -81,7 +84,7 @@ var detailComp  = Vue.component("dddd", {
 											  
 											</thead>
 											<tbody>
-											<tr v-for="(v,k) in dropForTable">
+											<tr v-for="(v,k) in dropForTable" data-toggle="tooltip" data-placement="right" title="右鍵點擊移動至背包">
 											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet,v.first,'item',$event)" @contextmenu.prevent>{{v.first}}</a></td>
 											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet,v.second,'item',$event)" @contextmenu.prevent>{{v.second}}</a></td>
 											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet,v.third,'item',$event)" @contextmenu.prevent>{{v.third}}</a></td>
@@ -100,7 +103,7 @@ var detailComp  = Vue.component("dddd", {
 											<thead>
 											</thead>
 											<tbody>
-											<tr v-for="(v,k) in skillForTable">
+											<tr v-for="(v,k) in skillForTable" data-toggle="tooltip" data-placement="right" title="右鍵點擊查看該技能資訊">
 											   <td><a :href="'#'+v.first.name" @click="openSkillList">{{v.first.name}}</a></td>
 											   <td>
 												<a :href="'#'+v.first.name" @click="openSkillList">
@@ -138,7 +141,7 @@ var detailComp  = Vue.component("dddd", {
 							name:name,
 							species:species
 						}
-				if(event.buttons == 2){
+				
 					
 					if(type=="item"){
 						// 僅開放卡片 娃娃  宇宙奧秘 生命核心  幻獸營養劑的移動 
@@ -161,10 +164,13 @@ var detailComp  = Vue.component("dddd", {
 					}
 					
 					this.$emit("box-add",obj);
-				}
+				
 			},
 			openSkillList:function(){
 				this.$emit("open-skill");
+			},
+			findPet:function(type){
+				this.$emit("find-pet",this.data.pet,type);
 			},
 		},
 		watch:{

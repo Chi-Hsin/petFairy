@@ -37,7 +37,7 @@
 		<petfusion :data="petDropData" :data2="boxContent"  @start-fusion="fusionResultSend" v-show="divShowStyle.fusionShow"></petfusion>
 		<!-- 幻獸詳細資訊 -->
 		<dddd :data="{pet:detailData,skill:detailDataSkill,drop:detailDataDrop}"
-		@open-skill="showDiv('myBoxShow','petDetailShow','petFilterShow','skillListShow')" @box-add="boxAdded" v-show="divShowStyle.petDetailShow"></dddd>
+		@open-skill="showDiv('myBoxShow','petDetailShow','petFilterShow','skillListShow')" @box-add="boxAdded" v-show="divShowStyle.petDetailShow" @find-pet="findPetAll"></dddd>
 	
 	</div>
 	<div class="col-5">
@@ -57,7 +57,7 @@
 		style="height:65vh;overflow:auto;" @skill-filter="skillSelectFilter"></ssss>
 		
 		<!--玩具列表-->
-		<tttt :data="allToy" v-show="divShowStyle.toyListShow" style="height:90vh;overflow:auto;"  @show-toypets="showToyPets"></tttt>
+		<tttt :data="allToy" v-show="divShowStyle.toyListShow" style="height:90vh;overflow:auto;"  @show-toypets="showDetailDataAll($event,'name')"></tttt>
 	
 	</div>
 </div>

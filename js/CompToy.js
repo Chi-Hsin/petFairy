@@ -66,7 +66,7 @@ var toyComp  = Vue.component("tttt", {
 					</div>`,
 		methods:{
 			showPets:function(v){
-				this.$emit("show-toypets",v)
+				this.$emit("show-toypets",{name:v})
 			},
 		},
 		watch:{

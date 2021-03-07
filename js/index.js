@@ -111,7 +111,18 @@ var indexData = new Vue({
 					this.petDropData = obj;
 				},
 				boxAdded:function(obj){
-					// console.log(obj)
+					// console.log(obj.species)
+					//重複道具檢查
+					var number = this.boxContent.filter(function(x){
+						return x.name == obj.name;
+					}).length;
+					if(number != 0){
+						// alert("Repeat");
+						return;
+					}
+					
+					
+					
 					if(obj.species == "monster"){
 						arr = this.allPet.filter(function(x){
 							return x.id == obj.id;
@@ -213,13 +224,19 @@ var indexData = new Vue({
 								condition4 && condition5 && condition6 && condition7;
 					})
 				},
-				showToyPets:function(v){
+				showDetailDataAll:function(obj,type="name"){
 					var arr = this.allPet.filter(function(x){
-						return x.name == v;
+						return x[type] == obj[type];
 					})
 					if(arr.length ==0){return;}//若沒找到該幻獸 就不往下執行  這行DEBUG用
 					this.detailData = arr[0];
 					// console.log(arr)
+					
+				},
+				findPetAll:function(obj,type="name"){
+					this.petFilter = this.allPet.filter(function(x){
+						return x[type] == obj[type];
+					})
 					
 				},
 				showDetailData:function(id){

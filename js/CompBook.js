@@ -22,7 +22,8 @@ var bookComp  = Vue.component("book-tutorial", {
 					{number:15,scene:"book7"},
 					{number:16,scene:"book8"},
 					{number:17,scene:"book9"},
-					{number:18,scene:"book10"}
+					{number:18,scene:"book10"},
+					{number:19,scene:"book11"}
 				],
 				catalogList:{
 					"關於本站":[
@@ -41,8 +42,9 @@ var bookComp  = Vue.component("book-tutorial", {
 								
 							   ],
 					"背包與詳細資訊":[
-								{name:"基本介紹",sceneNumber:17},
-								{name:"進階功能",sceneNumber:18}
+								{name:"背包介紹",sceneNumber:17},
+								{name:"詳細資訊",sceneNumber:18},
+								{name:"其他功能",sceneNumber:19}
 							   ],			
 				},
 		  }
@@ -319,23 +321,36 @@ Vue.component("book8", {//融合模擬 基本介紹
 
 
 
-Vue.component("book9", {//背包與詳細資訊 基本介紹
+Vue.component("book9", {//背包與詳細資訊 背包介紹
       props:['data'],
 	  template: `<div class="row">
-					<p><img src="img/book/screenshot_20210307_032418.png" style="width:100%;"></p>
-					<p>在背包裡，娃娃的圖都會是彩色</p>
-					<p><img src="img/book/screenshot_20210307_032429.png" style="width:100%;"></p>
-					<p>幻獸則是黑白顯示</p>
-					<p><img src="img/book/screenshot_20210307_032452.png" style="width:100%;"></p>
-					<p>卡片則是會長這樣</p>
+					<div class="col-12">在背包裡</div>
+					<div class="col-6"><img src="img/book/screenshot_20210307_032418.png" style="width:100%;"></div>
+					<div class="col-6">娃娃的圖會是彩色</div>
+					<div class="col-6"><img src="img/book/screenshot_20210307_032429.png" style="width:100%;"></div>
+					<div class="col-6">幻獸則是黑白顯示</div>
+					<div class="col-6"><img src="img/book/screenshot_20210307_032452.png" style="width:100%;"></div>
+					<div class="col-6">卡片則統一這樣顯示</div>
 					
-					<p>在進行融合模擬的時候，可能需要這些道具</p>
-					<p>至於怎麼取得?去找吧!我都放在網站裡了~</p>
+					<p>在進行融合模擬的時候，可能需要這些道具。</p>
 				</div>`
 });
 
 
-Vue.component("book10", {//背包與詳細資訊 進階功能
+Vue.component("book10", {//背包與詳細資訊 詳細資訊
+      props:['data'],
+	  template: `<div class="row">
+					<dl>
+						<dt>而這些道具要怎麼取得呢?</dt>
+						<dd>對著幻獸點擊或對物品點右鍵，都可以讓他們移動到背包</dd>
+						<dd>- <img src="img/book/screenshot_20210307_200539.png" style="width:100%;"></dd>
+						<dt>相關技能搜索</dt>
+						<dd>點擊技能名稱即可查閱相關技能資訊</dd>
+					</dl>  
+				</div>`
+});
+
+Vue.component("book11", {//背包與詳細資訊 進階功能
       props:['data'],
 	  template: `<div class="row">
 					<dl>
@@ -347,3 +362,5 @@ Vue.component("book10", {//背包與詳細資訊 進階功能
 					</dl>  
 				</div>`
 });
+
+

@@ -255,8 +255,7 @@ var indexData = new Vue({
 				showBoxDetailData:function(id){
 					
 					
-					//改用已經篩選過的陣列  再進行篩選  加快速度
-					var arr = this.boxContent.filter(function(v){
+					var arr = this.allPet.filter(function(v){
 						return v.id == id;
 					})
 					this.detailData = arr[0];

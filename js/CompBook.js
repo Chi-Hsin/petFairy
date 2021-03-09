@@ -152,12 +152,23 @@ var bookComp  = Vue.component("book-tutorial", {
 	  
 Vue.component("book1", {//網站介面
       props:['data'],
+	  data:function(){
+		  return{
+			  dataList:[
+				{name:"幻獸搜尋",src:"img/book/1.png",content:"依照屬性、可學習技能等條件做搜尋"},
+				{name:"融合模擬",src:"img/book/2.png",content:"模擬遊戲中進行模擬的情況與結果分析"},
+				{name:"技能列表",src:"img/book/3.png",content:"查看幻獸可學習或通過神殿學習的技能"},
+				{name:"玩具列表",src:"img/book/5.png",content:"查找玩具製作材料與相關幻獸"},
+			  ]
+		  }
+	  },
 	  template: `<div class="row">
-					<h3>導航列</h3>
-					<div>包含了六個功能</div>
-					<div v-for="i in 5">
-						<p>幻獸搜尋  依照條件做搜尋</p>
-						<p><img :src="'img/book/'+ i +'.png'" style="width:100%;"></p>
+					
+					<div class="col-12"><h3>導航列</h3></div>
+					<div v-for="(v,k) in dataList">
+						<p style="color:blue;">{{v.name}}</p>
+						<p>{{v.content}}</p>
+						<p><img :src="v.src" style="width:100%;"></p>
 					</div>
 					以及這本書。
 				</div>`

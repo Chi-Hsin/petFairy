@@ -32,9 +32,6 @@ var toyComp  = Vue.component("nnnn", {
 						  <li class="nav-item" id="skillList">
 							<a class="nav-link" href="javascript:;" :style="{color:data.color}"  @click="showDiv('myBoxShow','petDetailShow','petFilterShow','skillListShow')">技能列表<img src="img/icon/skill.gif"></a>
 						  </li>
-						  <li class="nav-item" id="specirsList">
-							<a class="nav-link" href="javascript:;" :style="{color:data.color}"  >物種列表<img src="img/icon/species.gif"></a>
-						  </li>
 						  <li class="nav-item" id="toyList">
 							<a class="nav-link" href="javascript:;" :style="{color:data.color}"  @click="showDiv('myBoxShow','petDetailShow','toyListShow')">玩具列表<img src="img/icon/toy.gif"></a>
 						  </li>

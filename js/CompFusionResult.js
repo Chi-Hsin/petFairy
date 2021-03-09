@@ -99,7 +99,7 @@ var testComp  = Vue.component("frfrfr", {
 								<div class="col-12"><img src="img/icon/woodBack.gif" style="width:100%;"></div>
 								<div class="col-4"><img src="img/icon/question.gif"></div>
 								<div class="col-8">
-									<p style="color:red;font-weight:bold;">此融合可能易變產生其他物種</p>
+									<p style="color:red;font-weight:bold;">此融合可能異變產生其他物種</p>
 								</div>
 							</div>
 						

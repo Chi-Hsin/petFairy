@@ -36,7 +36,7 @@ var testComp  = Vue.component("bbbb", {
 		 
 						<div class="col-4 pt-2" v-for="(v,k) in arr2" style="background:url('CCC.png') no-repeat;background-size:contain;height:15vh;">
 							
-							<img :src="'img/'+v.type+'/'+v.id+'.gif'" style="width:100%;" :style="grayScalable(v.type,v.species)" @click="showDetail(v.id)" @contextmenu.prevent @mousedown="removeItem(v.id,v.name,$event)"
+							<img :src="'img/'+v.type+'/'+v.id+'.gif'" style="width:100%;" :style="grayScalable(v.type,v.species)" @click="showDetail(v)" @contextmenu.prevent @mousedown="removeItem(v.id,v.name,$event)"
 							@dragstart="petDrag(v,$event)" onerror="this.src='img/icon/notFound.gif'">
 							
 						</div>
@@ -46,8 +46,8 @@ var testComp  = Vue.component("bbbb", {
 				return type=="monster" && species!= "娃娃"  ?this.colorGray: this.colorable
 			},
 			
-			showDetail:function(id){
-				this.$emit("show-detail",id);
+			showDetail:function(obj){
+				this.$emit("show-detail",obj);
 			},
 			removeItem:function(id,name,event){
 				 if(id=="empty" || event.button != 2){return;}

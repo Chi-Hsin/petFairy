@@ -110,6 +110,24 @@ var testComp  = Vue.component("xxxx", {
 					this.$emit("update-pet",this.select);
 				
 			},
+			dropSelect:function(){
+				if(this.dropSelect == ""){return;}
+				
+				this.speciesDirSelect = "All";
+				this.elementSelect = "All";
+				this.mapSelect = "";
+				this.nameSelect = "";
+				this.skillSelect = [];
+			},
+			mapSelect:function(){
+				if(this.mapSelect == ""){return;}
+				
+				this.speciesDirSelect = "All";
+				this.elementSelect = "All";
+				this.dropSelect = "";
+				this.nameSelect = "";
+				this.skillSelect = [];
+			},
 			
 		},
       }); 

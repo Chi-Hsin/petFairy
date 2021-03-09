@@ -23,14 +23,15 @@ var bookComp  = Vue.component("book-tutorial", {
 					{number:16,scene:"book8"},
 					{number:17,scene:"book9"},
 					{number:18,scene:"book10"},
-					{number:19,scene:"book11"}
+					{number:19,scene:"book11"},
+					{number:20,scene:"book12"},
 				],
 				catalogList:{
 					"關於本站":[
 								{name:"導航列",sceneNumber:1},
 								{name:"開頭的老鼠",sceneNumber:2},
 								{name:"素材來源",sceneNumber:3},
-								{name:"感謝有你們",sceneNumber:4}
+								{name:"感謝名單",sceneNumber:4}
 							   ],
 					"幻獸搜尋":[
 								{name:"基本介紹",sceneNumber:11},
@@ -38,13 +39,14 @@ var bookComp  = Vue.component("book-tutorial", {
 							   ],
 					"融合模擬":[
 								{name:"歷史起源",sceneNumber:13},
-								{name:"基本介紹",sceneNumber:16}
+								{name:"石頭對應",sceneNumber:16},
+								{name:"基本介紹",sceneNumber:17},
 								
 							   ],
 					"背包與詳細資訊":[
-								{name:"背包介紹",sceneNumber:17},
-								{name:"詳細資訊",sceneNumber:18},
-								{name:"其他功能",sceneNumber:19}
+								{name:"背包介紹",sceneNumber:18},
+								{name:"詳細資訊",sceneNumber:19},
+								{name:"其他功能",sceneNumber:20}
 							   ],			
 				},
 		  }
@@ -237,19 +239,19 @@ Vue.component("book5", {//幻獸搜尋 基本介紹
 					<p>屬性包含了金、木、水、火、土、光、闇七種屬性可供篩選，
 					每個屬性都有他的能力走向</p>
 					
-					<p>金屬性:力量、體質</p>
-					<p>木屬性:體質、小偏智慧</p>
-					<p>水屬性:敏捷</p>
-					<p>火屬性:力量、小偏幸運</p>
-					<p>土屬性:幸運、體質</p>
-					<p>光屬性:除了魅力以外平均成長</p>
-					<p>闇屬性:智慧</p>
-					<p>而每個物種也有對應的能力偏向。</p>
-					<p>因此，寵物的能力走向是由屬性與本身物種共同決定。</p>
-					<p><img src="img/monster/516.gif"></p>
-					<p>例如大象物種偏力量，法亞象本身為火屬性，所以成長偏向是火+力；</p>
-					<p><img src="img/monster/207.gif"></p>
-					<p>綿羊物種偏智慧，黑綿羊是闇屬性，成長偏向是闇+智，這兩隻也分別同時是純力、純智寵。</p>
+					<div class="col-12 bg-warning text-dark">金屬性:力量、體質</div>
+					<div class="col-12 bg-success text-light">木屬性:體質、小偏智慧</div>
+					<div class="col-12 bg-info text-light">水屬性:敏捷</div>
+					<div class="col-12 bg-danger text-light">火屬性:力量、小偏幸運</div>
+					<div class="col-12 text-light" style="background:brown;">土屬性:幸運、體質</div>
+					<div class="col-12 bg-light text-dark">光屬性:除了魅力以外平均成長</div>
+					<div class="col-12 bg-dark text-light">闇屬性:智慧</div>
+					<div class="col-12">而每個物種也有對應的能力偏向。</div>
+					<div class="col-12">因此，寵物的能力走向是由屬性與本身物種共同決定。</div>
+					<div class="col-12"><img src="img/monster/516.gif"></div>
+					<div class="col-12">例如大象物種偏力量，法亞象本身為火屬性，所以成長偏向是火+力；</div>
+					<div class="col-12"><img src="img/monster/207.gif"></div>
+					<div class="col-12">綿羊物種偏智慧，黑綿羊是闇屬性，成長偏向是闇+智，這兩隻也分別同時是純力、純智寵。</div>
 				</div>`
 });
 
@@ -259,12 +261,13 @@ Vue.component("book6", {//幻獸搜尋 進階功能
 	  template: `<div class="row">
 					<dl>
 						<dt>右鍵選擇全部勾選/取消勾選</dt>
-						<dd>- <img src="img/book/20210307_012729.gif" style="width:100%;"></dd>
+						<dd><img src="img/book/20210307_012729.gif" style="width:100%;"></dd>
 						<dt>如果想要尋找稀有寵</dt>
 						<dd>在出沒處打上稀有兩字即可</dd>
 						<dd><img src="img/book/20210307_013209.gif" style="width:100%;"></dd>
 						<dt>注意事項</dt>
-						<dd>- 如果所有篩選選項都是空的，是不會搜索出結果的哦~</dd>
+						<dd>● 如果所有篩選選項都是空的，是不會搜索出結果的哦~</dd>
+						<dd>● 若搜尋掉落、出處時，會將其他選項預設為空白，為的是方便使用者搜尋</dd>
 					</dl>  
 				</div>`
 });
@@ -299,13 +302,53 @@ Vue.component("book7", {//融合模擬 歷史起源
 						<img :src="nowContent.src">
 						<p v-html="nowContent.content"></p>
 						
-						// 這裡放石頭對應技能表格
+						
 						
 				</div>`
 });
+Vue.component("book8", {//宇宙奧秘石頭
+      props:['data'],
+	  data: function () {
+		return {
+			stoneList:[
+				{stone:"妖魔石",skill:"寄生",stoneSrc:"img/item/37.gif",skillSrc:"img/skill/18.gif"},
+				{stone:"天使石",skill:"賜福",stoneSrc:"img/item/xx.gif",skillSrc:"img/skill/13.gif"},
+				{stone:"綠玉髓",skill:"狂亂",stoneSrc:"img/item/yy.gif",skillSrc:"img/skill/3.gif"},
+				{stone:"元素結晶",skill:"回春",stoneSrc:"img/item/38.gif",skillSrc:"img/skill/5.gif"},
+				{stone:"黑曜石",skill:"亡命一擊",stoneSrc:"img/item/zz.gif",skillSrc:"img/skill/21.gif"},
+				{stone:"靈魂石",skill:"犧牲",stoneSrc:"img/item/39.gif",skillSrc:"img/skill/20.gif"},
+				{stone:"路娜晶石",skill:"三連擊",stoneSrc:"img/item/40.gif",skillSrc:"img/skill/22.gif"},
+				{stone:"狄米斯晶石",skill:"吸魂術",stoneSrc:"img/item/41.gif",skillSrc:"img/skill/23.gif"},
+				{stone:"約書亞晶石",skill:"拉拉舞",stoneSrc:"img/item/42.gif",skillSrc:"img/skill/24.gif"},
+				{stone:"血卵石",skill:"推車",stoneSrc:"img/item/XY.gif",skillSrc:"img/skill/19.gif"},
+			],
+		}
+	  },
+	  template: `<div class="row table-responsive">
+						<p>以下僅列出常用、<span class="text-danger">最高學習等級</span>技能對應的石頭。</p>
+						<table class="table table-striped">
+							<thead>
+							  <tr>
+								<th>增加技能</th>
+								<th></th>
+								<th>對應石頭</th>
+								<th></th>
+							  </tr>
+							</thead>
+							<tbody>
+							<tr  v-for="(v,k) in stoneList">
+							   <td><img :src="v.skillSrc"></td>
+							   <td>{{v.skill}}</td>
+							   <td><img :src="v.stoneSrc"></td>
+							   <td>{{v.stone}}</td>
+							</tr>
+							</tbody>
+						</table>
+						<p>※注意：推車技能在設定上屬於稀有技能，機率僅為<span class="text-danger">10%</span></p>
+					</div>`
+});
 
-
-Vue.component("book8", {//融合模擬 基本介紹
+Vue.component("book9", {//融合模擬 基本介紹
       props:['data'],
 	  template: `<div class="row">
 					<dl>
@@ -321,7 +364,7 @@ Vue.component("book8", {//融合模擬 基本介紹
 
 
 
-Vue.component("book9", {//背包與詳細資訊 背包介紹
+Vue.component("book10", {//背包與詳細資訊 背包介紹
       props:['data'],
 	  template: `<div class="row">
 					<div class="col-12">在背包裡</div>
@@ -337,7 +380,7 @@ Vue.component("book9", {//背包與詳細資訊 背包介紹
 });
 
 
-Vue.component("book10", {//背包與詳細資訊 詳細資訊
+Vue.component("book11", {//背包與詳細資訊 詳細資訊
       props:['data'],
 	  template: `<div class="row">
 					<dl>
@@ -350,15 +393,20 @@ Vue.component("book10", {//背包與詳細資訊 詳細資訊
 				</div>`
 });
 
-Vue.component("book11", {//背包與詳細資訊 進階功能
+Vue.component("book12", {//背包與詳細資訊 進階功能
       props:['data'],
 	  template: `<div class="row">
 					<dl>
 						<dt>右鍵取消</dt>
-						<dd>- <img src="img/book/20210307_035200.gif" style="width:100%;"></dd>
-						<dt>點擊幻獸可以直接查看詳細資訊</dt>
+						<dd><img src="img/book/20210307_035200.gif" style="width:100%;"></dd>
+						<dt>點擊背包內幻獸</dt>
+						<dd>可以直接查看詳細資訊</dd>
+						<dt>詳細資訊單一篩選</dt>
+						<dd>點擊可篩選出特定物種、屬性等資料</dd>
+						<dd><img src="img/book/screenshot_20210310_003530.png" style="width:100%;"></dd>
+						<dd><img src="img/book/screenshot_20210310_003840.png" style="width:100%;"></dd>
 						<dt>注意事項</dt>
-						<dd>- 背包有格子數量限制</dd>
+						<dd>背包有格子數量限制</dd>
 					</dl>  
 				</div>`
 });

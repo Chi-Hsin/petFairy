@@ -23,7 +23,7 @@
 <div id="xyz">
 
 <!-- 上方導航列 -->
-<nnnn @show-div="showDiv"></nnnn>
+<nnnn @show-div="showDiv" :data="navBarStyle"></nnnn>
 <book-tutorial></book-tutorial>
 <div class="row" style="height:90vh;" v-cloak>
 
@@ -38,7 +38,7 @@
 		<petfusion :data="petDropData" :data2="boxContent"  @start-fusion="fusionResultSend" v-show="divShowStyle.fusionShow"></petfusion>
 		<!-- 幻獸詳細資訊 -->
 		<dddd :data="{pet:detailData,skill:detailDataSkill,drop:detailDataDrop}"
-		@open-skill="showDiv('myBoxShow','petDetailShow','petFilterShow','skillListShow')" @box-add="boxAdded" v-show="divShowStyle.petDetailShow" @find-pet="findPetAll"></dddd>
+		@open-skill="showDiv('myBoxShow','petDetailShow','petFilterShow','skillListShow')" @box-add="boxAdded" v-show="divShowStyle.petDetailShow" @find-pet="findPetAll" @change-navbar="changeNavBar"></dddd>
 	
 	</div>
 	<div class="col-5">

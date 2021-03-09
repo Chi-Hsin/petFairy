@@ -31,9 +31,14 @@ var testComp  = Vue.component("petfusion", {
 					return [this.itemSelect];
 				}
 			},
+			
 		},
 		 template: `<div class="" style="height:90vh;overflow:auto;">
-		
+						<div class="row" style="background:rgba(222,186,114,0.5)">
+							<p>請從背包裡拖曳選擇父系、母系幻獸</p>
+							<p>並選擇要繼承的相對應選項</p>
+						
+						</div>
 						<div class="row">
 							<div class="col-3">父系幻獸:</div>
 							<div class="col-3" style="background:url('CCC.png') ;background-repeat:no-repeat;background-size:contain;"><img style="width:100%;" :src="'img/monster/'+fusionItem.father.id+'.gif'" onerror="this.src='img/icon/notFound.gif'" @drop="petDrop('father',$event)" @dragover="petDragOver($event)"></div>
@@ -43,7 +48,7 @@ var testComp  = Vue.component("petfusion", {
 						<div class="row" style="color:red;">
 								<div class="col-6">{{message}}</div>
 						</div>
-						<div class="row">
+						<div class="row fusionHover" :style="selectBackGround('幻獸營養劑')">
 							<div class="col-2">
 							<input type="radio"  id="幻獸營養劑選擇" name="itemSelect" value="幻獸營養劑" v-model="itemSelect">
 							</div>
@@ -55,23 +60,19 @@ var testComp  = Vue.component("petfusion", {
 								</span>
 							</div>
 						</div>
-						<div class="row">
+						<div class="row fusionHover" :style="selectBackGround('生命核心')">
 							<div class="col-2"><input type="radio"  id="生命核心選擇" name="itemSelect" value="生命核心" v-model="itemSelect"></div>
 							<div class="col-10">
 								<p><label for="生命核心選擇">我要自由繼承上一代所有能力</label></p>
 							</div>
 						</div>
-						<div class="row">
+						<div class="row fusionHover" :style="selectBackGround('宇宙奧秘')">
 							<div class="col-2"><input type="radio"  id="宇宙奧秘選擇" name="itemSelect" value="宇宙奧秘" v-model="itemSelect"></div>
 							<div class="col-10">
 								<p><label for="宇宙奧秘選擇">我要自由繼承上一代所有能力</label></p>
 								<p><label for="宇宙奧秘選擇">且添加技能</label></p>
 								
 							</div>
-						</div>
-						<div class="row" v-show="itemSelect == '宇宙奧秘'">
-							<div class="col-3"></div>
-							<div class="col-4" style="background:url('CCC.png');background-repeat: no-repeat;background-size:contain;"><img style="width:100%;" onerror="img/icon/notFound.gif" src="img/monster/empty.gif" @drop="petDrop('skillStone',$event)" @dragover="petDragOver($event)"></div>
 						</div>
 						<div class="row" v-show="itemSelect == '生命核心' || itemSelect == '宇宙奧秘'">
 							<div class="col-2"></div>
@@ -83,7 +84,7 @@ var testComp  = Vue.component("petfusion", {
 								<label><input type="radio"   :value="fusionItem.father" v-model="selectOption.element">父</label>
 								<label><input type="radio"   :value="fusionItem.mother" v-model="selectOption.element">母</label></p>
 								<p>物種
-								<label><input type="radio"   :value="fusionItem.father" v-model="selectOption.species"></label>父
+								<label><input type="radio"   :value="fusionItem.father" v-model="selectOption.species">父</label>
 								<label><input type="radio"   :value="fusionItem.mother" v-model="selectOption.species">母</label></p>
 							
 							</div>
@@ -91,11 +92,14 @@ var testComp  = Vue.component("petfusion", {
 						</div>
 						
 						
-						<button @click="startFusion">開始融合</button>
+						<button @click="startFusion"  class="btn btn-primary">開始融合</button>
 						
 						
 					</div>`,
 		methods:{
+			selectBackGround:function(itemSelect){
+				return this.itemSelect == itemSelect ? {background:"rgba(222,186,114,0.5)"} : ""
+			},
 			petDrop:function(type,event){
 				event.preventDefault();
 				if(!this.data.hasOwnProperty("id")){return;}

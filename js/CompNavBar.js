@@ -3,19 +3,19 @@
 
 var toyComp  = Vue.component("nnnn", {
 	
-        props:[],
+        props:["data"],
 		data: function () {
 		  return {
 		  }
 		},
 		computed:{
-			toyfilter:function(){
-			
+			bgColor:function(){
+				// return {background:this.data.background,color:this.data.color}
 			},
 		},
 		template: `
-					  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height:10vh;">
-					  <a class="navbar-brand" href="javascript:void(0)"><img src="img/icon/AAAAA.png"></a>
+					  <nav class="navbar navbar-expand-lg" style="height:10vh;" :style="{background:data.background}">
+					  <a class="navbar-brand" href="javascript:void(0)" ><img src="img/icon/AAAAA.png"></a>
 					  <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navb" aria-expanded="false">
 						<span class="navbar-toggler-icon"></span>
 					  </button>
@@ -24,22 +24,22 @@ var toyComp  = Vue.component("nnnn", {
 						<ul class="navbar-nav mr-auto">
 						
 						  <li class="nav-item" id="petSearch" >
-							<a class="nav-link" href="javascript:;" @click="showDiv('myBoxShow','petDetailShow','petFilterShow','petSearchShow')">幻獸搜尋<img src="img/icon/search.gif"></a>
+							<a class="nav-link" href="javascript:;" :style="{color:data.color}"       @click="showDiv('myBoxShow','petDetailShow','petFilterShow','petSearchShow')">幻獸搜尋<img src="img/icon/search.gif"></a>
 						  </li>
 						   <li class="nav-item" id="petMix">
-							<a class="nav-link" href="javascript:;" @click="showDiv('myBoxShow','fusionResultShow','fusionShow')">融合模擬<img src="img/icon/fusionSimulate.gif"></a>
+							<a class="nav-link" href="javascript:;" :style="{color:data.color}"    @click="showDiv('myBoxShow','fusionResultShow','fusionShow')">融合模擬<img src="img/icon/fusionSimulate.gif"></a>
 						  </li>
 						  <li class="nav-item" id="skillList">
-							<a class="nav-link" href="javascript:;" @click="showDiv('myBoxShow','petDetailShow','petFilterShow','skillListShow')">技能列表<img src="img/icon/skill.gif"></a>
+							<a class="nav-link" href="javascript:;" :style="{color:data.color}"  @click="showDiv('myBoxShow','petDetailShow','petFilterShow','skillListShow')">技能列表<img src="img/icon/skill.gif"></a>
 						  </li>
 						  <li class="nav-item" id="specirsList">
-							<a class="nav-link" href="javascript:;">物種列表<img src="img/icon/species.gif"></a>
+							<a class="nav-link" href="javascript:;" :style="{color:data.color}"  >物種列表<img src="img/icon/species.gif"></a>
 						  </li>
 						  <li class="nav-item" id="toyList">
-							<a class="nav-link" href="javascript:;" @click="showDiv('myBoxShow','petDetailShow','toyListShow')">玩具列表<img src="img/icon/toy.gif"></a>
+							<a class="nav-link" href="javascript:;" :style="{color:data.color}"  @click="showDiv('myBoxShow','petDetailShow','toyListShow')">玩具列表<img src="img/icon/toy.gif"></a>
 						  </li>
 						  <li class="nav-item" id="tutorialList">
-							<a class="nav-link" href="javascript:;"  data-target="#myModal" data-toggle="modal">網站說明<img src="img/icon/book.gif"></a>
+							<a class="nav-link" href="javascript:;" :style="{color:data.color}"   data-target="#myModal" data-toggle="modal">網站說明<img src="img/icon/book.gif"></a>
 						  </li>
 						</ul>
 						<!-- <ul class="mb-0 mr-4"> -->

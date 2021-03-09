@@ -34,4 +34,7 @@
 
 
 /* .modal-body tbody tr:hover{background:rgba(0,0,255,0.2)} */
-
+/*融合觸碰顯示*/
+.fusionHover:hover{
+	background:rgba(222,186,114,0.5);
+}

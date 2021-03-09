@@ -85,10 +85,10 @@ var detailComp  = Vue.component("dddd", {
 											</thead>
 											<tbody>
 											<tr v-for="(v,k) in dropForTable" data-toggle="tooltip" data-placement="right" title="右鍵點擊移動至背包">
-											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet,v.first,'item',$event)" @contextmenu.prevent>{{v.first}}</a></td>
-											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet,v.second,'item',$event)" @contextmenu.prevent>{{v.second}}</a></td>
-											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet,v.third,'item',$event)" @contextmenu.prevent>{{v.third}}</a></td>
-											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet,v.forth,'item',$event)" @contextmenu.prevent>{{v.forth}}</a></td>
+											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet,v.first,'item',$event)" @contextmenu.prevent @click="changeNavBar(v.first)">{{v.first}}</a></td>
+											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet,v.second,'item',$event)" @contextmenu.prevent @click="changeNavBar(v.second)">{{v.second}}</a></td>
+											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet,v.third,'item',$event)" @contextmenu.prevent @click="changeNavBar(v.third)">{{v.third}}</a></td>
+											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet,v.forth,'item',$event)" @contextmenu.prevent @click="changeNavBar(v.forth)">{{v.forth}}</a></td>
 											</tr>
 											</tbody>
 										</table>
@@ -171,6 +171,29 @@ var detailComp  = Vue.component("dddd", {
 			},
 			findPet:function(type){
 				this.$emit("find-pet",this.data.pet,type);
+			},
+			changeNavBar:function(name){
+				
+				var changeColor = {}
+				var arr = [
+					{name:"濟世的決心",background:"#ffc107",color:"#000"},
+					{name:"創世之原初",background:"#343a40",color:"rgba(255,255,255,.5)"},
+					{name:"愛麗絲藍的象徵",background:"#E8EEF8",color:"#000"},
+					{name:"裝著醬油的黑罐子",background:"#000",color:"#fff"},
+					{name:"白拋拋幼咪咪的信用卡",background:"#fff",color:"#000"},
+					{name:"嫩芽綠的象徵",background:"#BAC6A4",color:"#000"},
+					{name:"奔放如火的熱情心意",background:"#dc3545",color:"#fff"},
+					{name:"米古店長的紫色帽子",background:"#6610f2",color:"#fff"}
+				];
+				
+				var condition = arr.some(function(x){
+					if(x.name == name){changeColor = x;}
+					return x.name == name
+				})
+				if(!condition){return;}
+				// console.log(changeColor)
+				this.$emit("change-navbar",changeColor)
+				
 			},
 		},
 		watch:{

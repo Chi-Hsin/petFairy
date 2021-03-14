@@ -133,8 +133,7 @@ var speciesData = new Vue({
 					{"ID":130,"type":"天使","magic":1},
 					{"ID":131,"type":"採蘋果精靈","magic":1},
 					{"ID":132,"type":"壞女巫","magic":1},
-					{"ID":133,"type":"上校","magic":1},
-					{"ID":134,"type":"雞年獸","magic":1}
+					{"ID":133,"type":"上校","magic":1}
 				],
                },
 			

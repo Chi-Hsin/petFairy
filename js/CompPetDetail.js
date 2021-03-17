@@ -1,6 +1,18 @@
 var detailComp  = Vue.component("dddd", {
 	
         props:["data"],
+		data:function() {
+			return{
+				status:{
+					"str":"img/icon/str.gif",
+					"vit":"img/icon/vit.gif",
+					"agi":"img/icon/agi.gif",
+					"int":"img/icon/int.gif",
+					"luk":"img/icon/luk.gif",
+					"chm":"img/icon/chm.gif"
+				}
+			}
+		},
 		computed:{
 			skillForTable:function(){
 				var arr = [];
@@ -31,7 +43,8 @@ var detailComp  = Vue.component("dddd", {
 				}
 				return arr
 				
-			}
+			},
+			
 			
 		},
 		template: `<div class="row"><!-- 寵物詳細資訊 -->
@@ -48,7 +61,8 @@ var detailComp  = Vue.component("dddd", {
 							
 							<p>物種偏向:<a href="javascript:;"  data-toggle="tooltip" :title="'點擊尋找物種偏向同樣為'+data.pet.speciesDir+'的幻獸'" data-placement="right" @click="findPet('speciesDir')">{{data.pet.speciesDir}}</a></p>
 							
-							<p>技能格:<a href="javascript:;"  data-toggle="tooltip" :title="'點擊尋找技能格同樣為'+data.pet.skillAmount+'的幻獸'" data-placement="right" @click="findPet('skillAmount')">{{data.pet.skillAmount}}</a></p>
+							技能格:<a href="javascript:;"  data-toggle="tooltip" :title="'點擊尋找技能格同樣為'+data.pet.skillAmount+'的幻獸'" data-placement="right" @click="findPet('skillAmount')">{{data.pet.skillAmount}}</a>
+							編號:{{data.pet.id}}
 						</div>
 						<div class="col-12">
 							<ul class="nav nav-tabs">
@@ -69,12 +83,19 @@ var detailComp  = Vue.component("dddd", {
 							<div class="tab-content">
 								<!--能力-->
 								<div id="menu1" class="container tab-pane  active">
-									<p><img src="img/skill/1.gif">力：{{data.pet.str}}</p>
-									<p><img src="img/skill/1.gif">體：{{data.pet.vit}}</p>
-									<p><img src="img/skill/1.gif">智：{{data.pet.int}}</p>
-									<p><img src="img/skill/1.gif">魅：{{data.pet.chm}}</p>
-									<p><img src="img/skill/1.gif">幸：{{data.pet.luk}}</p>
-								
+										<div class="row mt-3" v-for="(v,k) in status">
+										 <div class="col-3"><img :src="v" ><span>{{data["pet"][k]}}</span></div>
+										 <div class="col-9" style="">
+											 <div class="progress">
+												<div class="progress-bar" role="progressbar"  :style="calcStatus(data['pet'][k])">
+												
+												</div>
+											 </div>
+											
+										 </div>
+										</div>
+										
+										 
 								</div>
 								<!--掉落-->
 								<div id="menu2" class="container tab-pane fade">
@@ -84,7 +105,7 @@ var detailComp  = Vue.component("dddd", {
 											  
 											</thead>
 											<tbody>
-											<tr v-for="(v,k) in dropForTable" data-toggle="tooltip" data-placement="right" title="右鍵點擊移動至背包">
+											<tr v-for="(v,k) in dropForTable" data-toggle="tooltip" data-placement="right" title="點擊移動至背包">
 											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet,v.first,'item',$event)" @contextmenu.prevent @click="changeNavBar(v.first)">{{v.first}}</a></td>
 											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet,v.second,'item',$event)" @contextmenu.prevent @click="changeNavBar(v.second)">{{v.second}}</a></td>
 											   <td><a href="javascript:;" @mousedown="boxAdded('item',data.pet,v.third,'item',$event)" @contextmenu.prevent @click="changeNavBar(v.third)">{{v.third}}</a></td>
@@ -132,6 +153,9 @@ var detailComp  = Vue.component("dddd", {
 						
 					</div>`,
 		methods:{
+			calcStatus:function(status){//計算屬性條
+				return {width:Math.floor(status/337*100) + "%"};
+			},
 			boxAdded:function(type,obj,name,species,event){
 				var obj ={
 							id:obj.id,

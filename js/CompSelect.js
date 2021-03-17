@@ -26,9 +26,9 @@ var testComp  = Vue.component("xxxx", {
 				"能學法術","肉體強化","恢復","連擊","豬頭","裝死","賜福","威脅",
 				"轉換","吸血","推車","犧牲","亡命一擊","三連擊","吸魂術","拉拉舞"
 			],
-			nameOption:["太郎","公主","士兵","小狗","鯉魚"],
-			dropOption:["幻獸營養劑","玻璃種子","生命核心","求婚","貴賓卡"],
-			mapOption:["魔幣","稀有","威奇","龍宮","鬼"],
+			nameOption:["太郎","公主","士兵","小狗","鯉魚","龍"],
+			dropOption:["幻獸營養劑","玻璃種子","藥丸","求婚","貴賓卡"],
+			mapOption:["魔幣","稀有","威奇","龍宮","鬼","夢"],
 			skillSelect:[],
 			elementSelect:"闇",
 			speciesDirSelect:"智",
@@ -74,13 +74,13 @@ var testComp  = Vue.component("xxxx", {
 								<div>掉落<input type='search' v-model="dropSelect" placeholder="輸入掉落物關鍵字" list="dropInput"></div>
 								<div>出處<input type='search' v-model="mapSelect" placeholder="輸入取得出處關鍵字" list="mapInput"></div>
 								<datalist id="nameInput">
-									<option v-for="(v,k) in nameOption" :value="v">
+									<option v-for="(v,k) in nameOption" :value="v"></option>
 								</datalist>
 								<datalist id="dropInput">
-									<option v-for="(v,k) in dropOption" :value="v">
+									<option v-for="(v,k) in dropOption" :value="v"></option>
 								</datalist>
 								<datalist id="mapInput">
-									<option v-for="(v,k) in mapOption" :value="v">
+									<option v-for="(v,k) in mapOption" :value="v"></option>
 								</datalist>
 							</div>
 							<div class="row" style="height:40vh;" @contextmenu.prevent @mousedown="selectAllSkill($event)">

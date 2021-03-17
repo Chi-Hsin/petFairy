@@ -27,7 +27,7 @@ var testComp  = Vue.component("xxxx", {
 				"轉換","吸血","推車","犧牲","亡命一擊","三連擊","吸魂術","拉拉舞"
 			],
 			nameOption:["太郎","公主","士兵","小狗","鯉魚"],
-			dropOption:["幻獸營養劑","玻璃種子","生命核心","宇宙奧秘","貴賓卡"],
+			dropOption:["幻獸營養劑","玻璃種子","生命核心","求婚","貴賓卡"],
 			mapOption:["魔幣","稀有","威奇","龍宮","鬼"],
 			skillSelect:[],
 			elementSelect:"闇",

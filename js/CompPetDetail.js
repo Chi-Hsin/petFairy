@@ -124,7 +124,7 @@ var detailComp  = Vue.component("dddd", {
 											<thead>
 											</thead>
 											<tbody>
-											<tr v-for="(v,k) in skillForTable" data-toggle="tooltip" data-placement="right" title="右鍵點擊查看該技能資訊">
+											<tr v-for="(v,k) in skillForTable" data-toggle="tooltip" data-placement="right" title="點擊查看該技能資訊">
 											   <td><a :href="'#'+v.first.name" @click="openSkillList">{{v.first.name}}</a></td>
 											   <td>
 												<a :href="'#'+v.first.name" @click="openSkillList">

@@ -61,15 +61,26 @@ var indexData = new Vue({
 					var newArr,inherit;
 					if(obj.item == "幻獸營養劑"){
 					//營養一般融合
+						//子代可能產生的兩種屬性+物種
+						var childArr = [obj.father.species + obj.mother.element,obj.mother.species + obj.father.element];
+						//已經篩選到的屬性+物種資料 以陣列紀錄
+						var CorrespndArr = [] ;
 						var inherit = obj.selectOption.dir.element + 
 									"+" + obj.selectOption.dir.speciesDir;
 						var arrNormal = this.allPet.filter(function(v){
-							var c1 = v.species + v.element == obj.father.species + obj.mother.element
-									|| v.species + v.element == obj.mother.species + obj.father.element;
-							var c2 = v.map.includes("魔幣") == false &&  v.map.includes("稀有") == false ;
-							return c1 && c2;
+											if(childArr.includes(v.species + v.element)){
+												//如果找到第二筆以上同屬性同物種的資料 就跳過
+												//可以篩選重複資料  但是這邊要注意
+												//如果JSON檔的稀有寵和魔幣寵資料放在較前面的位置
+												//就會先被找到  所以若有必要 須加上map.includes的條件過濾
+												if(CorrespndArr.indexOf(v.species + v.element) > -1){return false;}
+												//如果找到第一筆的資料  就返回true
+												else{
+													CorrespndArr.push(v.species + v.element);
+													return true;
+												}
+											}
 						})
-						console.log(arrNormal);
 						arrNormal.forEach(function(v,i,a){
 							a[i] = Object.assign(v,{type:"monster"});
 							arr.push(a[i]);
@@ -79,7 +90,6 @@ var indexData = new Vue({
 						newArr = arr.filter(function(v,i,a){
 							return a.indexOf(v) == i;
 						})
-						console.log(newArr);
 						if(JSON.stringify(newArr[0]) == JSON.stringify(newArr[1])){
 							//基本上如果符合這情況就是  父母物種屬性完全一模一樣
 							newArr = [newArr[0]]
@@ -101,7 +111,7 @@ var indexData = new Vue({
 					
 					
 					this.fusionResult = {
-						allResult:newArr.slice(0,4),//最多只有四種結果可能產生
+						allResult:newArr,//最多只有四種結果可能產生
 						item:obj.item,
 						inherit:inherit,
 						father:obj.father,

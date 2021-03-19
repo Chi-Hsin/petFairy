@@ -19,6 +19,7 @@ var indexData = new Vue({
 				boxContent:[],
 				petDropData:{},//從BOX拉過來的物品資料
 				fusionResult:{},
+				vCloakImageDisplay:"block",
 				navBarStyle:{background:"#343a40",color:"rgba(255,255,255,.5)"},//導航列背景樣式
 				petFilter:[
 					{"id":212,"name":"黑鼠","level":"10~12","species":"老鼠","speciesDir":"智","element":"闇","skillAmount":3,"str":"14","vit":"14","agi":"16","int":"16","luk":"16","chm":"14","life":"97","drop":"黑鼠卡 黑鼠娃娃 重藤棍 青銅鎧甲 煤 青銅礦 黑色鈕釦","skill":"連擊、裝死、轉換、吸血、亡命一擊、詛咒術、毒擊術","map":"青鳥城外","圖片":"V"}
@@ -97,7 +98,7 @@ var indexData = new Vue({
 					
 					
 					this.fusionResult = {
-						allResult:newArr,
+						allResult:newArr.slice(0,4),//最多只有四種結果可能產生
 						item:obj.item,
 						inherit:inherit,
 						father:obj.father,
@@ -270,10 +271,14 @@ var indexData = new Vue({
 					// alert()
 					this.navBarStyle = obj;
 				},
+				closeMovie:function(){
+					this.vCloakImageDisplay = "none";
+				},
             },
 			watch:{
 			},
             created() { 
+				// this.vCloakImage = Math.floor(Math.random() * 947);
             },
             mounted(){
 				

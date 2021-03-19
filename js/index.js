@@ -64,9 +64,12 @@ var indexData = new Vue({
 						var inherit = obj.selectOption.dir.element + 
 									"+" + obj.selectOption.dir.speciesDir;
 						var arrNormal = this.allPet.filter(function(v){
-							return v.species + v.element == obj.father.species + obj.mother.element
-								|| v.species + v.element == obj.mother.species + obj.father.element
+							var c1 = v.species + v.element == obj.father.species + obj.mother.element
+									|| v.species + v.element == obj.mother.species + obj.father.element;
+							var c2 = v.map.includes("魔幣") == false &&  v.map.includes("稀有") == false ;
+							return c1 && c2;
 						})
+						console.log(arrNormal);
 						arrNormal.forEach(function(v,i,a){
 							a[i] = Object.assign(v,{type:"monster"});
 							arr.push(a[i]);
@@ -76,7 +79,7 @@ var indexData = new Vue({
 						newArr = arr.filter(function(v,i,a){
 							return a.indexOf(v) == i;
 						})
-						
+						console.log(newArr);
 						if(JSON.stringify(newArr[0]) == JSON.stringify(newArr[1])){
 							//基本上如果符合這情況就是  父母物種屬性完全一模一樣
 							newArr = [newArr[0]]

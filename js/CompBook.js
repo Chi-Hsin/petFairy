@@ -25,6 +25,8 @@ var bookComp  = Vue.component("book-tutorial", {
 					{number:18,scene:"book10"},
 					{number:19,scene:"book11"},
 					{number:20,scene:"book12"},
+					{number:21,scene:"book13"},
+					{number:22,scene:"book13"},
 				],
 				catalogList:{
 					"關於本站":[
@@ -47,7 +49,11 @@ var bookComp  = Vue.component("book-tutorial", {
 								{name:"背包介紹",sceneNumber:18},
 								{name:"詳細資訊",sceneNumber:19},
 								{name:"其他功能",sceneNumber:20}
-							   ],			
+							   ],
+					"圖鑑列表":[
+								{name:"篩選列表",sceneNumber:21},
+								{name:"紀錄功能",sceneNumber:22}
+							   ]		   
 				},
 		  }
 		},
@@ -419,6 +425,36 @@ Vue.component("book12", {//背包與詳細資訊 進階功能
 						<dt>注意事項</dt>
 						<dd>背包有格子數量限制</dd>
 					</dl>  
+				</div>`
+});
+
+Vue.component("book13", {//圖鑑列表介紹
+      props:['data'],
+	  template: `<div class="row">
+					<dl v-show="data == 21">
+						<dt>各類篩選</dt>
+						<dd>可依照名稱、編號...等選項做篩選</dd>
+						<dt>點擊檢視</dt>
+						<dd>只要左鍵點擊.即可顯示幻獸資訊</dd>
+						<dd><img src="img/book/leftClick.gif"></dd>
+						<dt>全部顯示</dt>
+						<dd>可以直接檢視有「亮燈」的幻獸資料</dd>
+						<dd><img src="img/book/screenshot_20210321_173132.png"></dd>
+					</dl>
+					<dl v-show="data == 22">
+						<dt>記錄功能</dt>
+						<dd>那麼要如何記錄呢?</dd>
+						<dd><img src="img/book/rightClick.gif"></dd>
+						<dd>只要右鍵點擊即可</dd>
+						<dd><img src="img/book/20210321_175804.gif" style="width:100%;"></dd>
+						<dd>再點擊一次即可取消</dd>
+						<dt>儲存功能</dt>
+						<dt>除了可以記錄以外.更能儲存已經紀錄好的資料</dt>
+						<dd>你每一筆操作  都會自動記錄</dd>
+						<dd>再下次拜訪網站時仍然可以查詢這些有「亮燈」的資訊</dd>
+						<dt>你剛才已經記錄過了嗎?</dt>
+						<dd><a href="https://chi-hsin.github.io/petFairy/">再次拜訪網站 試試看自動儲存的效果吧!</a></dd>
+					</dl>  					
 				</div>`
 });
 

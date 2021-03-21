@@ -68,6 +68,7 @@ var testComp  = Vue.component("frfrfr", {
 			}
 		},
 		 template: `<div class="row" style="height:90vh;overflow:auto">
+		 
 						<div v-show="resultAppeared == ''">體驗融合的樂趣吧</div>
 						<div class="col-12">
 							<div class="row" v-show="resultAppeared != ''">

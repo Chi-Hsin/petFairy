@@ -62,7 +62,7 @@ var detailComp  = Vue.component("dddd", {
 							<p>物種偏向:<a href="javascript:;"  data-toggle="tooltip" :title="'點擊尋找物種偏向同樣為'+data.pet.speciesDir+'的幻獸'" data-placement="right" @click="findPet('speciesDir')">{{data.pet.speciesDir}}</a></p>
 							
 							技能格:<a href="javascript:;"  data-toggle="tooltip" :title="'點擊尋找技能格同樣為'+data.pet.skillAmount+'的幻獸'" data-placement="right" @click="findPet('skillAmount')">{{data.pet.skillAmount}}</a>
-							編號:{{data.pet.id}}
+							
 						</div>
 						<div class="col-12">
 							<ul class="nav nav-tabs">

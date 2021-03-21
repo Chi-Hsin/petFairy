@@ -1,6 +1,7 @@
 .row{margin:0;}
 [v-cloak] {
   display: none;
+  
 }
 
 .word-wrap {/*文字拉長*/
@@ -38,3 +39,23 @@
 .fusionHover:hover{
 	background:rgba(222,186,114,0.5);
 }
+
+
+#tugianTable tr:hover{background:rgba(255, 255, 0,.5);}
+/*開頭的幻獸圖示旋轉*/
+
+/* @keyframes oxxo { */
+  /* 0%{ */
+    /* right: 0; */
+  /* } */
+  /* 50%{content:url("../img/monster/1.gif");right: 50%} */
+  /* 100%{ */
+	 /* content:url("../img/monster/1.gif"); */
+    /* right: 100%; */
+  /* } */
+/* } */
+/* #rotating{ */
+ /* position:absolute;top:10%; */
+    /* right:0; */
+	/* -webkit-animation: linear infinite oxxo 3s; */
+/* } */

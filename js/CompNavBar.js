@@ -36,8 +36,12 @@ var toyComp  = Vue.component("nnnn", {
 							<a class="nav-link" href="javascript:;" :style="{color:data.color}"  @click="showDiv('myBoxShow','petDetailShow','toyListShow')">玩具列表<img src="img/icon/toy.gif"></a>
 						  </li>
 						  <li class="nav-item" id="tutorialList">
+							<a class="nav-link" href="javascript:;" :style="{color:data.color}" data-toggle="modal" @click="showDiv('myBoxShow','petDetailShow','tugianShow')">圖鑑列表<img src="img/icon/species.gif"></a>
+						  </li>
+						  <li class="nav-item" id="tutorialList">
 							<a class="nav-link" href="javascript:;" :style="{color:data.color}"   data-target="#myModal" data-toggle="modal">網站說明<img src="img/icon/book.gif"></a>
 						  </li>
+						  
 						</ul>
 						<!-- <ul class="mb-0 mr-4"> -->
 							<!-- <li class="nav-item dropdown"> -->

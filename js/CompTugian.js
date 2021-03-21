@@ -47,7 +47,7 @@ var toyComp  = Vue.component("tugian", {
 										<th>編號<input type='search' v-model="numberSelect"  size="2"></th>
 										<th>名稱<input type='search' v-model="nameSelect"  size="3"></th>
 										<th>
-											物種<select v-model="speciesSelect" size="4">
+											物種<select v-model="speciesSelect">
 												<option value="All">All</option>
 												<option v-for="(v,k) in data2" :value="v.type">{{v.type}}</option>
 											</select>

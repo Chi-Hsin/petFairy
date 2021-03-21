@@ -437,8 +437,8 @@ Vue.component("book13", {//圖鑑列表介紹
 						<dt>點擊檢視</dt>
 						<dd>只要左鍵點擊.即可顯示幻獸資訊</dd>
 						<dd><img src="img/book/leftClick.gif"></dd>
-						<dt>全部顯示</dt>
-						<dd>可以直接檢視有「亮燈」的幻獸資料</dd>
+						<dt>全部顯示/紀錄顯示</dt>
+						<dd>可以切換檢視有「亮燈」的幻獸資料</dd>
 						<dd><img src="img/book/screenshot_20210321_173132.png"></dd>
 					</dl>
 					<dl v-show="data == 22">

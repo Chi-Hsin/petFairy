@@ -10,7 +10,8 @@ var detailComp  = Vue.component("dddd", {
 					"int":"img/icon/int.gif",
 					"luk":"img/icon/luk.gif",
 					"chm":"img/icon/chm.gif"
-				}
+				},
+				title:["名稱","等級","物種","技能數"],
 			}
 		},
 		computed:{
@@ -53,15 +54,22 @@ var detailComp  = Vue.component("dddd", {
 							<img :src="'img/monster/'+data.pet.id+'.gif'" style="width:100%;" onerror="this.src='img/icon/notFound.gif';"  @mousedown="boxAdded('monster',data.pet,data.pet.name,'monster',$event)" @contextmenu.prevent data-toggle="tooltip" data-placement="right" title="點擊可以移動至背包">
 						</div>
 						<div class="col-7" style="height:30vh;">
-							{{data.pet.name}}
-							LV:{{data.pet.level}}
-							<p>物種:<a href="javascript:;"  data-toggle="tooltip" :title="'點擊尋找物種同樣為'+data.pet.species+'的幻獸'" data-placement="right" @click="findPet('species')">{{data.pet.species}}</a></p>
 							
-							<p>屬性:<a href="javascript:;"  data-toggle="tooltip" :title="'點擊尋找屬性同樣為'+data.pet.element+'的幻獸'" data-placement="right" @click="findPet('element')">{{data.pet.element}}</a></p>
 							
-							<p>物種偏向:<a href="javascript:;"  data-toggle="tooltip" :title="'點擊尋找物種偏向同樣為'+data.pet.speciesDir+'的幻獸'" data-placement="right" @click="findPet('speciesDir')">{{data.pet.speciesDir}}</a></p>
 							
-							技能格:<a href="javascript:;"  data-toggle="tooltip" :title="'點擊尋找技能格同樣為'+data.pet.skillAmount+'的幻獸'" data-placement="right" @click="findPet('skillAmount')">{{data.pet.skillAmount}}</a>
+							
+							
+							<div class="row" style="height:100%;">
+								<div class="col-6" style="padding:0">{{data.pet.name}}</div>
+								<div class="col-6" style="padding:0">LV:{{data.pet.level}}</div>
+								<div class="col-6" style="padding:0">物種:</div>
+								<div class="col-6" style="padding:0"><a href="javascript:;"  data-toggle="tooltip" :title="'點擊尋找物種同樣為'+data.pet.species+'的幻獸'" data-placement="right" @click="findPet('species')">{{data.pet.species}}</a></div>
+								<div class="col-12" style="padding:0">技能格數:</div>
+								<div class="col-12" style="padding:0;cursor:pointer" data-toggle="tooltip" :title="'點擊尋找技能格數同樣為'+data.pet.skillAmount+'的幻獸'" data-placement="right" @click="findPet('skillAmount')">
+									<img src="img/icon/skillBall.gif" v-for="i in data.pet.skillAmount">
+								
+								</div>
+							</div>
 							
 						</div>
 						<div class="col-12">
@@ -195,6 +203,7 @@ var detailComp  = Vue.component("dddd", {
 			},
 			findPet:function(type){
 				this.$emit("find-pet",this.data.pet,type);
+				this.$emit("show-petfilter");
 			},
 			changeNavBar:function(name){
 				

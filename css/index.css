@@ -1,22 +1,20 @@
 .row{margin:0;}
 [v-cloak] {
   display: none;
-  
 }
-
 .word-wrap {/*文字拉長*/
    min-width:100px;
 }
 
+/*導航列*/
 #navb li:hover img{
 	content:url("../img/icon/pointer.gif");
 }
-
 .nav-link img{height:8vh;}
 
-.modal-dialog{
-	/* height:50vh; */
-}
+
+
+/*網站說明外框樣式*/
 .modal-body{
 	overflow-y: auto;
 	padding:0;
@@ -32,17 +30,30 @@
 }
 .modal-body img{height:100%;}
 
+/*導航列底下所有內容外框*/
+#mainDiv{height:90vh;}
+#leftDiv{
+	margin:0;
+	padding:0;
+	background:#DEBA72;
+	height:90vh;
+	overflow:auto;
+}
 
 
-/* .modal-body tbody tr:hover{background:rgba(0,0,255,0.2)} */
+/*縮圖*/
+.petFilterImage{width:100%;}
+
 /*融合觸碰顯示*/
 .fusionHover:hover{
 	background:rgba(222,186,114,0.5);
 }
 
-
+/*圖鑑列表觸碰*/
 #tugianTable tr:hover{background:rgba(255, 255, 0,.5);}
 
+/*開頭動畫.故事*/
+   /*外框*/
 #openingView{
 	z-index:999;
 	background:#DEBA72;
@@ -53,9 +64,7 @@
 	top:0;
 	left:0;
 }
-
-
-
+   /*動畫*/
 @keyframes mouse1 {
   0%{
 	left:0;top:75%
@@ -88,8 +97,6 @@
 	left:0;top:75%
   }
 }
-
-
 #rotating1{/*右向  左下角*/
  position:absolute;
  left:0;

@@ -69,7 +69,11 @@ var testComp  = Vue.component("frfrfr", {
 		},
 		 template: `<div class="row" style="height:90vh;overflow:auto">
 		 
-						<div v-show="resultAppeared == ''">體驗融合的樂趣吧</div>
+						<div v-show="resultAppeared == ''" style="width:100%;height:100%;background:url('img/icon/fusionResultBk.gif');background-size:contain;background-position:center;background-repeat:no-repeat;">
+						
+						
+						
+						</div>
 						<div class="col-12">
 							<div class="row" v-show="resultAppeared != ''">
 							<div class="col-12" style="text-align:center">

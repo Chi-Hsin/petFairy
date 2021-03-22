@@ -22,10 +22,10 @@
 
 <div id="xyz" >
 <div id="openingView" :style="{display:vCloakImageDisplay}">
-	<img  src="img/animate/1.gif" id="rotating1">
-	<img  src="img/animate/2.gif" id="rotating2">
-	<img  src="img/animate/3.gif" id="rotating3">
-	<img  src="img/animate/4.gif" id="rotating4">
+<img  src="img/animate/1.gif" id="rotating1">
+<img  src="img/animate/2.gif" id="rotating2">
+<img  src="img/animate/3.gif" id="rotating3">
+<img  src="img/animate/4.gif" id="rotating4">
 	<div class="row h-25">
 	
 	</div>
@@ -48,9 +48,9 @@
 <!-- 上方導航列 -->
 <nnnn @show-div="showDiv" :data="navBarStyle"></nnnn>
 <book-tutorial></book-tutorial>
-<div class="row"  id="mainDiv" v-cloak>
+<div class="row" style="height:90vh;" v-cloak>
 	<!-- 左側道具欄 -->
-	<div class="col-3" v-show="divShowStyle.myBoxShow" id="leftDiv">
+	<div class="col-3" v-show="divShowStyle.myBoxShow" style="margin:0;padding:0;background:#DEBA72;height:90vh;overflow:auto;">
 		<bbbb :data1="boxContent" :data2="allPet" @show-detail="[showBoxDetailData($event),showDiv('myBoxShow','petDetailShow','petFilterShow','petSearchShow')]"
 		@remove-item="boxDeleted" @pet-drag="petDrag"></bbbb>
 		
@@ -67,7 +67,7 @@
 		<frfrfr :data="fusionResult" v-show="divShowStyle.fusionResultShow"></frfrfr><!-- 融合結果分析 -->
 		<div class="row"  style="overflow:auto;height:25vh;" v-show="divShowStyle.petFilterShow"><!-- 搜尋結果縮圖區 -->
 			<div class="col-3" v-for="(v,k) in petFilter" >
-				<img class="petFilterImage"  :src="`img/monster/`+v.id+`.gif`" 
+				<img style="width:100%" :src="`img/monster/`+v.id+`.gif`" 
 				@click="showDetailData(v.id)" onError="this.src='img/icon/notFound.gif';">
 			</div>
 			

@@ -48,7 +48,7 @@
 	background:#DEBA72;
 	width:100%;
 	height:100%;
-	position:absolute;
+	position:fixed;
 	overflow-x:hidden;
 	top:0;
 	left:0;

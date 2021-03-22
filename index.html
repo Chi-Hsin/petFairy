@@ -21,10 +21,30 @@
 </body>
 
 <div id="xyz" >
-<!-- <div style="z-index:999;background:#fff;width:100%;height:100%;position:absolute;overflow-x:hidden;top:0;left:0;" :style="{display:vCloakImageDisplay}"> -->
-	<!-- <img src="img/monster/212.gif" id="rotating">加載中.... -->
-	<!-- <button v-cloak @click="closeMovie">Close</button> -->
-<!-- </div> -->
+<div id="openingView" :style="{display:vCloakImageDisplay}">
+<img  src="img/animate/1.gif" id="rotating1">
+<img  src="img/animate/2.gif" id="rotating2">
+<img  src="img/animate/3.gif" id="rotating3">
+<img  src="img/animate/4.gif" id="rotating4">
+	<div class="row h-25">
+	
+	</div>
+	<div class="row h-50" style="overflow:auto">
+		<div class="col-3 mx-auto" style="height:100%;">
+		<h4>【第五隻老鼠】<button v-cloak @click="closeMovie">關閉故事</button></h4>
+		<p>從前從前，有四隻很要好的黑鼠們一起去登山，但是這一天牠們遇到了山難。</p>
+		<p>風雪很大，所幸牠們找到了一個小屋子避難，希望能在這邊等到鼠鼠登山隊的救援。</p>
+		
+		<p>溫度很低，牠們不能讓身體失溫，也要抵抗強烈襲來的睡意，那該怎麼辦呢?</p>
+		<p>其中一隻黑鼠就提議，牠們分別站在四個角落，以逆時針方向前進，去拍前面黑鼠同伴的肩膀，四隻老鼠輪流叫醒對方，這樣就能保持清醒，不至於失溫。</p>
+		<p>牠們就這樣進行了拍肩膀的過程好幾個小時，到了早上終於等到了救援。</p>
+		
+		</div>
+		
+	</div>
+	<div class="row h-25"></div>
+	
+</div>
 <!-- 上方導航列 -->
 <nnnn @show-div="showDiv" :data="navBarStyle"></nnnn>
 <book-tutorial></book-tutorial>

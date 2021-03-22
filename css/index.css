@@ -42,20 +42,75 @@
 
 
 #tugianTable tr:hover{background:rgba(255, 255, 0,.5);}
-/*開頭的幻獸圖示旋轉*/
 
-/* @keyframes oxxo { */
-  /* 0%{ */
-    /* right: 0; */
-  /* } */
-  /* 50%{content:url("../img/monster/1.gif");right: 50%} */
-  /* 100%{ */
-	 /* content:url("../img/monster/1.gif"); */
-    /* right: 100%; */
-  /* } */
-/* } */
-/* #rotating{ */
- /* position:absolute;top:10%; */
-    /* right:0; */
-	/* -webkit-animation: linear infinite oxxo 3s; */
-/* } */
+#openingView{
+	z-index:999;
+	background:#DEBA72;
+	width:100%;
+	height:100%;
+	position:absolute;
+	overflow-x:hidden;
+	top:0;
+	left:0;
+}
+
+
+
+@keyframes mouse1 {
+  0%{
+	left:0;top:75%
+  }
+  25%,100%{
+	left:90%;top:75%
+  }
+}
+@keyframes mouse2 {
+  0%,25%{
+	left:90%;top:75%
+  }
+  50%,100%{
+	left:90%;top:0
+  }
+}
+@keyframes mouse3 {
+  0%,50%{
+	left:90%;top:0
+  }
+  75%,100%{
+	left:0;top:0
+  }
+}
+@keyframes mouse4 {
+  0%,75%{
+	left:0;top:0
+  }
+  100%{
+	left:0;top:75%
+  }
+}
+
+
+#rotating1{/*右向  左下角*/
+ position:absolute;
+ left:0;
+ top:75%;
+ -webkit-animation:linear infinite mouse1  8s ;
+}
+#rotating2{/*上向  右下角*/
+ position:absolute;
+ left:90%;
+ top:75%;
+ -webkit-animation:linear infinite mouse2  8s ;
+}
+#rotating3{/*左向  右上角*/
+ position:absolute;
+ left:90%;
+ top:0;
+  -webkit-animation:linear infinite mouse3  8s ;
+}
+#rotating4{/*下向  左上角*/
+ position:absolute;
+ left:0;
+ top:0;
+  -webkit-animation:linear infinite mouse4  8s ;
+}

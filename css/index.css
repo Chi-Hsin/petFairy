@@ -33,21 +33,24 @@
 /*導航列底下所有內容外框*/
 #mainDiv{height:90vh;}
 #leftDiv{
-	margin:0;
-	padding:0;
-	background:#DEBA72;
-	height:90vh;
-	overflow:auto;
+	
 }
 
 
 /*縮圖*/
 .petFilterImage{width:100%;}
 
-/*融合觸碰顯示*/
+/*融合介面*/
+   /*觸碰顯示*/
 .fusionHover:hover{
 	background:rgba(222,186,114,0.5);
 }
+#fusionDiv{
+	height:90vh;overflow:auto;
+}
+#fusionDiv div{padding:0;}
+
+
 
 /*圖鑑列表觸碰*/
 #tugianTable tr:hover{background:rgba(255, 255, 0,.5);}

@@ -6,104 +6,191 @@ var testComp  = Vue.component("petfusion", {
 			fusionItem:{
 				father:{id:"empty",type:"father"},
 				mother:{id:"empty",type:"mother"},
-				item:{id:"empty"},
-			},
-			itemSelect:"幻獸營養劑",
-			selectOption:{
-				dir:{}, //繼承能力成長父或母(營養、核心、奧秘)
-				element:{},//繼承屬性父或母(核心、奧秘)
-				species:{}//繼承物種父或母(核心、奧秘)
+				itemSelect:"幻獸營養劑",
+				dir:{id:"empty",type:"father"},
+				element:{id:"empty",type:"father"},
+				species:{id:"empty",type:"father"},
+				
+				
 			},
 			message:"",
-			itemLost:"",
+			itemLost:[],
 		  }
 		},
 		computed:{
+			
 			itemRequired:function(){
-				if(this.itemSelect == "幻獸營養劑"){
-					var name = this.selectOption.dir.name || "";
-					var doll = name + "娃娃";
-					var card = name + "卡";
-					return [this.itemSelect,doll,card];
+				var require = [
+								{name:"父系幻獸",check:false},
+								{name:"母系幻獸",check:false},
+								{name:"父母成長選擇",check:false},
+								{name:this.fusionItem.itemSelect,check:false}
+							];
+				if(this.fusionItem.itemSelect == "幻獸營養劑"){
+					if(this.fusionItem.dir.id != "empty"){
+						var name = this.fusionItem.dir.name;
+						var doll = {name:name + "娃娃",check:false};
+						var card = {name:name + "卡",check:false};
+						require.push(card,doll);
+					}
+					return require;
 				}
-				else if(this.itemSelect == "生命核心" ||
-						this.itemSelect == "宇宙奧秘"){
-					return [this.itemSelect];
+				else if(this.fusionItem.itemSelect == "生命核心" ||
+						this.fusionItem.itemSelect == "宇宙奧秘"){
+					require.push(
+									{name:"父母屬性選擇",check:false},
+									{name:"父母物種選擇",check:false}
+								);		
+					return require;
 				}
 			},
-			
+			itemHave:function(){
+				var that = this;
+				var box = this.data2.map(x => x.name);
+				
+				var itemRequired = JSON.parse(JSON.stringify(this.itemRequired));
+				var requireKey = itemRequired.map(x => x.name);
+				
+				//背包
+				box.forEach(function(v,i,a){
+					var index = requireKey.indexOf(v);
+					if(index > -1){
+						itemRequired[index].check = true;
+					}
+				})
+				//融合介面
+				itemRequired.forEach(function(v,i,a){
+					if(v.name == "父系幻獸"){
+						if(that.fusionItem.father.id=="empty"){
+							v.check = false;
+						}
+						else{v.check = true;}
+					}
+					else if(v.name == "母系幻獸"){
+						if(that.fusionItem.mother.id=="empty"){
+							v.check= false;
+						}
+						else{v.check = true;}
+					}
+					else if(v.name == "父母成長選擇"){
+						if(that.fusionItem.dir.id=="empty"){
+							v.check = false;
+						}
+						else{v.check = true;}
+					}
+					else if(v.name == "父母屬性選擇"){
+						if(that.fusionItem.element.id=="empty"){
+							v.check = false;
+						}
+						else{v.check = true;}
+					}
+					else if(v.name == "父母物種選擇"){
+						if(that.fusionItem.species.id=="empty"){
+							v.check = false;
+						}
+						else{v.check = true;}
+					}
+				})
+				
+				
+				return itemRequired;
+			},
+			itemCheckImage:function(){
+				var arr = [];
+				var src;
+				this.itemHave.forEach(function(v,i,a){
+					src = v.check ? "img/icon/itemCheckOK.gif": "img/icon/itemCheckBuOK.gif";
+					arr.push(src)
+				})
+				return arr;
+			},
 		},
-		 template: `<div class="row" style="height:90vh;overflow:auto;">
+		 template: `<div class="row" id="fusionDiv">
 						<div class="col-12">
-							<div class="row" style="background:rgba(222,186,114,0.5)">
+							<div class="row" style="background:rgba(222,186,114,0.5);height:10vh;">
 								<p>請從背包裡拖曳選擇父系、母系幻獸</p>
 								<p>並選擇要繼承的相對應選項</p>
 							
 							</div>
 						</div>
-						<div class="col-12">
-							<div class="row">
-								<div class="col-3">父系幻獸:</div>
-								<div class="col-3" style="background:url('CCC.png') ;background-repeat:no-repeat;background-size:contain;"><img style="width:100%;" :src="'img/monster/'+fusionItem.father.id+'.gif'" onerror="this.src='img/icon/notFound.gif'" @drop="petDrop('father',$event)" @dragover="petDragOver($event)"></div>
-								<div class="col-3">母系幻獸:</div>
-								<div class="col-3" style="background:url('CCC.png');background-repeat:no-repeat;background-size:contain;"><img style="width:100%;" :src="'img/monster/'+fusionItem.mother.id+'.gif'"  onerror="this.src='img/icon/notFound.gif'" @drop="petDrop('mother',$event)" @dragover="petDragOver($event)"></div>
-							</div>
-						</div>
-						<div class="col-12">
-							<div class="row" style="color:red;">
-									<div class="col-6">{{message}}</div>
-							</div>
-						</div>
-						<div class="col-12">
-							<div class="row fusionHover" :style="selectBackGround('幻獸營養劑')">
-								<div class="col-2">
-								<input type="radio"  id="幻獸營養劑選擇" name="itemSelect" value="幻獸營養劑" v-model="itemSelect">
-								</div>
-								<div class="col-10">
-									<p><label for="幻獸營養劑選擇">我要繼承上一代成長能力</label></p>
-									<span v-show="itemSelect == '幻獸營養劑'">成長
-									<label><input type="radio"   :value="fusionItem.father" v-model="selectOption.dir">父</label>
-									<label><input type="radio"   :value="fusionItem.mother" v-model="selectOption.dir">母</label>
-									</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-12">
-							<div class="row fusionHover" :style="selectBackGround('生命核心')">
-								<div class="col-2"><input type="radio"  id="生命核心選擇" name="itemSelect" value="生命核心" v-model="itemSelect"></div>
-								<div class="col-10">
-									<p><label for="生命核心選擇">我要自由繼承上一代所有能力</label></p>
-								</div>
-							</div>
-						</div>
-						<div class="col-12">
-							<div class="row fusionHover" :style="selectBackGround('宇宙奧秘')">
-								<div class="col-2"><input type="radio"  id="宇宙奧秘選擇" name="itemSelect" value="宇宙奧秘" v-model="itemSelect"></div>
-								<div class="col-10">
-									<p><label for="宇宙奧秘選擇">我要自由繼承上一代所有能力</label></p>
-									<p><label for="宇宙奧秘選擇">且添加技能</label></p>
-									
-								</div>
+						<!--父母幻獸放置區-->
+						<div class="col-6" >
+							<div class="row" style="height:40vh;">
+								<div class="col-6">父系幻獸:</div>
+								<div class="col-6" style="background:url('CCC.png') ;background-repeat:no-repeat;background-size:contain;"><img style="width:100%;" :src="'img/monster/'+fusionItem.father.id+'.gif'" onerror="this.src='img/icon/notFound.gif'" @drop="petDrop('father',$event)" @dragover="petDragOver($event)"></div>
+							
+								<div class="col-6">母系幻獸:</div>
+								<div class="col-6" style="background:url('CCC.png');background-repeat:no-repeat;background-size:contain;"><img style="width:100%;" :src="'img/monster/'+fusionItem.mother.id+'.gif'"  onerror="this.src='img/icon/notFound.gif'" @drop="petDrop('mother',$event)" @dragover="petDragOver($event)"></div>
 							</div>
 						</div>
 						
-						<div class="col-12">
-							<div class="row" v-show="itemSelect == '生命核心' || itemSelect == '宇宙奧秘'">
-								<div class="col-2"></div>
-								<div class="col-10">
-									<p>成長
-									<label><input type="radio"   :value="fusionItem.father" v-model="selectOption.dir">父</label>
-									<label><input type="radio"   :value="fusionItem.mother" v-model="selectOption.dir">母</label></p>
-									<p>屬性
-									<label><input type="radio"   :value="fusionItem.father" v-model="selectOption.element">父</label>
-									<label><input type="radio"   :value="fusionItem.mother" v-model="selectOption.element">母</label></p>
-									<p>物種
-									<label><input type="radio"   :value="fusionItem.father" v-model="selectOption.species">父</label>
-									<label><input type="radio"   :value="fusionItem.mother" v-model="selectOption.species">母</label></p>
-								
+						<!--材料需求清單-->
+						<div class="col-6">
+							<div class="row" style="height:40vh;">
+								<div class="col-12" v-for="(v,k) in itemRequired" >
+									<img :src="itemCheckImage[k]">{{v.name}}
+								</div>
+								<div class="col-12" style="color:red;">{{message}}</div>
+							</div>
+						</div>
+						
+						<!--能力繼承選項-->
+						<div class="col-6">
+							<p class="fusionHover">
+								<label><input type="radio"  id="幻獸營養劑選擇" name="fusionItem.itemSelect" value="幻獸營養劑" v-model="fusionItem.itemSelect">我要繼承上一代成長能力</label>
+							</p>
+							
+							<p class="fusionHover">
+								<label><input type="radio"  id="生命核心選擇" name="fusionItem.itemSelect" value="生命核心" v-model="fusionItem.itemSelect">我要自由繼承上一代所有能力</label>
+							</p>
+							
+							<p class="fusionHover">
+								<label><input type="radio"  id="宇宙奧秘選擇" name="fusionItem.itemSelect" value="宇宙奧秘" v-model="fusionItem.itemSelect">我要自由繼承上一代所有能力.且添加技能</label>
+							</p>
+							
+						</div>
+						
+						<!--成長能力選擇-->
+						<div class="col-6">
+							<div class="row" v-show="fusionItem.itemSelect == '幻獸營養劑'">
+								<div class="col-4">成長</div>
+								<div class="col-4">
+									<label><input type="radio"   :value="fusionItem.father" v-model="fusionItem.dir">父</label>
+								</div>
+								<div class="col-4">
+									<label><input type="radio"   :value="fusionItem.mother" v-model="fusionItem.dir">母</label>
 								</div>
 								
 							</div>
+							<div class="row" v-show="fusionItem.itemSelect == '生命核心' || 
+													fusionItem.itemSelect == '宇宙奧秘'">
+													
+								<div class="col-4">成長</div>
+								<div class="col-4">
+									<label><input type="radio"   :value="fusionItem.father" 
+										v-model="fusionItem.dir">父</label>
+								</div>
+								<div class="col-4">
+									<label><input type="radio"   :value="fusionItem.mother" 
+										v-model="fusionItem.dir">母</label>
+								</div>
+								<div class="col-4">屬性</div>
+								<div class="col-4">
+									<label><input type="radio"   :value="fusionItem.father" v-model="fusionItem.element">父</label>
+								</div>
+								<div class="col-4">
+									<label><input type="radio"   :value="fusionItem.mother" v-model="fusionItem.element">母</label>
+								</div>
+								<div class="col-4">物種</div>
+								<div class="col-4">
+									<label><input type="radio"   :value="fusionItem.father" v-model="fusionItem.species">父</label>
+								</div>
+								<div class="col-4">
+									<label><input type="radio"   :value="fusionItem.mother" v-model="fusionItem.species">母</label>
+								</div>
+								
+							</div>
+						
 						</div>
 						
 						<div class="col-12">
@@ -114,7 +201,7 @@ var testComp  = Vue.component("petfusion", {
 					</div>`,
 		methods:{
 			selectBackGround:function(itemSelect){
-				return this.itemSelect == itemSelect ? {background:"rgba(222,186,114,0.5)"} : ""
+				return this.fusionItem.itemSelect == itemSelect ? {background:"rgba(222,186,114,0.5)"} : ""
 			},
 			petDrop:function(type,event){
 				event.preventDefault();
@@ -129,46 +216,28 @@ var testComp  = Vue.component("petfusion", {
 			startFusion:function(){
 				this.message = "";
 				
-				//選項勾選檢查
-				if(this.fusionItem.father.id=="empty"){this.message = "缺爸爸";return;}
-				if(this.fusionItem.mother.id=="empty"){this.message = "缺媽媽";return;}
-				if(!this.selectOption.dir.hasOwnProperty('id')){this.message = "選成長";return;}
-				if(JSON.stringify(this.fusionItem.father) == JSON.stringify(this.fusionItem.mother))
-				{this.message = "爸媽一樣";return;}
-				
-				//生命或奧秘 需要進行屬性與物種的勾選
-				if(this.itemSelect == "生命核心" || this.itemSelect == "宇宙奧秘"){
-					if(!this.selectOption.element.hasOwnProperty('id')){this.message = "選屬性";return;}
-					if(!this.selectOption.species.hasOwnProperty('id')){this.message = "選物種";return;}
-				}
-				
 				//背包道具檢查
-				var box = this.data2.map(x => x.name);
-				var itemLost = this.itemLost;
-				itemLost = "";
-				var boxCheck = this.itemRequired.every(function(v,i,a){
-					if(!box.includes(v)){itemLost = v;}
-					return box.includes(v);
-				})
-				if(!boxCheck){
-						// console.log(arrLost);
-						this.message = "缺少道具" + itemLost;
-						return;
-					}
-				
+				var check = this.itemHave.every(x => x.check);
+				if(!check){
+					this.message = "缺少相對應材料";
+					return;
+				}
 				
 				var obj = {
 							father:this.fusionItem.father,
 							mother:this.fusionItem.mother,
-							item:this.itemSelect,
-							selectOption:this.selectOption
+							item:this.fusionItem.itemSelect,
+							selectOption:this.fusionItem
 						}
 				this.$emit("start-fusion",obj)
 			},
 			
 		},
 		watch:{
-			nameSelect:function(){
+			itemHave:function(){
+				var check = this.itemHave.every(x => x.check);
+				if(check){this.message = "";}
+				
 			},
 			
 		},

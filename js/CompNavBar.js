@@ -14,7 +14,7 @@ var toyComp  = Vue.component("nnnn", {
 			},
 		},
 		template: `
-					  <nav class="navbar navbar-expand-lg" style="height:10vh;" :style="{background:data.background}">
+					  <nav class="navbar navbar-expand" style="height:10vh;" :style="{background:data.background}">
 					  <a class="navbar-brand" href="javascript:void(0)" ><img src="img/icon/AAAAA.png"></a>
 					  <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navb" aria-expanded="false">
 						<span class="navbar-toggler-icon"></span>

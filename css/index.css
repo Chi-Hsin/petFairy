@@ -5,7 +5,9 @@
 .word-wrap {/*文字拉長*/
    min-width:100px;
 }
-
+#xyz{
+	min-width:1330px;
+}
 /*導航列*/
 #navb li:hover img{
 	content:url("../img/icon/pointer.gif");
